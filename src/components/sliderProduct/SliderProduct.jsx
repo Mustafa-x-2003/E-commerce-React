@@ -11,16 +11,18 @@ import { Pagination, Autoplay, Navigation } from "swiper/modules";
 // import Component
 import CardProduct from "./CardProduct";
 import ViewAllBtn from "../ViewAllBtn";
+import { Link } from "react-router";
 
 function SliderProduct({ title, products }) {
-  
   return (
     <div className="container pt-35">
       <h2 className="text-(--main-color)! text-3xl font-bold capitalize  flexb">
         {title}
-        <ViewAllBtn/>
+        
+        
+        <ViewAllBtn path={"/CartPage"}/>
+       
       </h2>
-      
 
       <Swiper
         loop={true}
@@ -34,22 +36,19 @@ function SliderProduct({ title, products }) {
         modules={[Autoplay, Pagination, Navigation]}
         className="w-full h-full  mt-5"
       >
-
-
         {products.map((product) => {
           if (products.length > 0) {
-            
             return (
-              <SwiperSlide
-              className="my-4"
-              >
-                <CardProduct
-                  name={product.title}
-                  price={product.price}
-                  image={product.images[0]}
-                  id={product.id}
-                />
-              </SwiperSlide>
+              <Link to={"/CartPage"}>
+                <SwiperSlide className="my-4">
+                  <CardProduct
+                    name={product.title}
+                    price={product.price}
+                    image={product.images[0]}
+                    id={product.id}
+                  />
+                </SwiperSlide>
+              </Link>
             );
           }
         })}

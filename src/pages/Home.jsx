@@ -91,8 +91,6 @@ function Home() {
   }, []);
   return (
     <div>
-      {/* === Header === */}
-      <Header />
       {/* === Home === */}
       <HomeSlider />
       {/* === FEATURED COLLECTION === */}
@@ -115,7 +113,7 @@ function Home() {
 
 
       <SliderBlogs title={"Explore our blog"} blogs={blogs} />
-      <Footer />
+   
     </div>
   );
 }

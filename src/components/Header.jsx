@@ -43,10 +43,12 @@ function Header() {
           </span>
         </div>
         <div className="relative">
-          <BiShoppingBag className="cursor-pointer hover:text-(--main-color) transition-all duration-300" />
-          <span className="absolute text-lg w-5 h-5 rounded-full flexc text-(--white-color) bg-(--main-color)  -bottom-2 -right-3 ">
-            0
-          </span>
+          <Link to={"/CartPage"}>
+            <BiShoppingBag className="cursor-pointer hover:text-(--main-color) transition-all duration-300" />
+            <span className="absolute text-lg w-5 h-5 rounded-full flexc text-(--white-color) bg-(--main-color)  -bottom-2 -right-3 ">
+              0
+            </span>
+          </Link>
         </div>
 
         <IoMenuSharp

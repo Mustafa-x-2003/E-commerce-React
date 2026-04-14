@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import Categorys from "./contexts/Categorys";
 
 function Search({ icon , placeholder }) {
+  const { search, setSearch } = useContext(Categorys);
   return (
     <div className="flexb   transition duration-300">
       <input
+      onChange={(e)=>{setSearch(e.target.value)}}
+      value={search}
         type="text"
         placeholder={placeholder}
         className="  peer pb-2  pr-2  border-b! border-(--border-color)! focus:border-(--main-color)! transition-all duration-300 "

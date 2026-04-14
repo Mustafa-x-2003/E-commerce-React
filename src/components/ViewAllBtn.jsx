@@ -2,9 +2,12 @@ import React from "react";
 import { Link } from "react-router";
 import { FaArrowRight } from "react-icons/fa";
 
-function ViewAllBtn() {
+function ViewAllBtn({path}) {
   return (
-    <Link className="flexb gap-2 text-(--color-heading) text-sm hover:text-(--main-color) transition duration-300 ">
+    <Link 
+    to={path}
+    
+    className="flexb gap-2 text-(--color-heading) text-sm hover:text-(--main-color) transition duration-300 ">
       View All
       <FaArrowRight className="text-sm!" />
     </Link>
