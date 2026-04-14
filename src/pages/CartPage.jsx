@@ -34,10 +34,7 @@ function CartPage() {
     }
     fetchProducts();
   }, [categorys]);
-  useEffect(()=>{
-
-    
-  },[])
+  useEffect(() => {}, []);
   return (
     <Categorys.Provider value={{ categorys, setCategorys }}>
       <div className="container flex py-10">
@@ -47,6 +44,17 @@ function CartPage() {
         <div className="w-[80%] grid grid-cols-4 gap-4">
           {loadProducts ? (
             <p>load..</p>
+          ) : search === "" ? (
+            products.map((p) => {
+              return (
+                <CardProduct
+                  name={p.title}
+                  price={p.price}
+                  image={p.images?.[0]}
+                  id={p.id}
+                />
+              );
+            })
           ) : (
             products.map((p) => {
               if (p.title.startsWith(search)) {
@@ -58,7 +66,7 @@ function CartPage() {
                     id={p.id}
                   />
                 );
-              } 
+              }
             })
           )}
         </div>

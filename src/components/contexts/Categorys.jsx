@@ -29,7 +29,7 @@ const Categorys = createContext();
 export function MyProviderContext({ children }) {
   const [categorys, setCategorys] = useState(allCategorys);
 
-  const [search, setSearch] = useState(null);
+  const [search, setSearch] = useState('');
 
   return (
     <Categorys.Provider value={{ categorys, setCategorys, search, setSearch }}>
