@@ -5,7 +5,7 @@ import Categorys from "../components/contexts/Categorys";
 
 function CartPage() {
   const [products, setProductes] = useState(null);
-  const {categorys , setCategorys , search , setSearch} = useContext(Categorys);
+  const { categorys, setCategorys, search, setSearch } = useContext(Categorys);
   const [loadProducts, setLoadProductes] = useState(true);
 
   if (!loadProducts) {
@@ -34,7 +34,10 @@ function CartPage() {
     }
     fetchProducts();
   }, [categorys]);
+  useEffect(()=>{
 
+    
+  },[])
   return (
     <Categorys.Provider value={{ categorys, setCategorys }}>
       <div className="container flex py-10">
@@ -46,14 +49,16 @@ function CartPage() {
             <p>load..</p>
           ) : (
             products.map((p) => {
-              return (
-                <CardProduct
-                  name={p.title}
-                  price={p.price}
-                  image={p.images?.[0]}
-                  id={p.id}
-                />
-              );
+              if (p.title.startsWith(search)) {
+                return (
+                  <CardProduct
+                    name={p.title}
+                    price={p.price}
+                    image={p.images?.[0]}
+                    id={p.id}
+                  />
+                );
+              } 
             })
           )}
         </div>
