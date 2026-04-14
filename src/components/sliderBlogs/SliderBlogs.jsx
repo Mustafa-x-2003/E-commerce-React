@@ -12,13 +12,13 @@ import { Pagination, Autoplay, Navigation } from "swiper/modules";
 
 
 import CardBlog from "./CardBlog";
-import ViewAllBtn from "./ViewAllBtn";
+import ViewAllBtn from ".././ViewAllBtn";
 
 function SliderBlogs({ title, blogs }) {
   
   return (
     <div className="container pt-35">
-      <h2 className="text-(--main-color)! text-3xl font-bold capitalize pb-3 flexb">
+      <h2 className="text-(--main-color)! text-3xl font-bold capitalize  flexb">
         {title}
         <ViewAllBtn/>
       </h2>
@@ -42,7 +42,9 @@ function SliderBlogs({ title, blogs }) {
           if (blogs.length > 0) {
             
             return (
-              <SwiperSlide>
+              <SwiperSlide
+              className="my-4"
+              >
                 <CardBlog 
                   image={blog.image}
                   title={blog.title}

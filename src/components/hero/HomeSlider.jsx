@@ -10,9 +10,9 @@ import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 import { Link } from "react-router";
 // ===========
-import bannar1 from "../images/banner_Hero1.jpg";
-import bannar2 from "../images/banner_Hero2.jpg";
-import bannar3 from "../images/banner_Hero3.jpg";
+import bannar1 from "../../images/banner_Hero1.jpg";
+import bannar2 from "../../images/banner_Hero2.jpg";
+import bannar3 from "../../images/banner_Hero3.jpg";
 
 const images = [bannar1, bannar2, bannar3];
 

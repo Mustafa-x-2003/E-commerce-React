@@ -16,7 +16,7 @@ function SliderProduct({ title, products }) {
   
   return (
     <div className="container pt-35">
-      <h2 className="text-(--main-color)! text-3xl font-bold capitalize pb-3 flexb">
+      <h2 className="text-(--main-color)! text-3xl font-bold capitalize  flexb">
         {title}
         <ViewAllBtn/>
       </h2>
@@ -32,7 +32,7 @@ function SliderProduct({ title, products }) {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="w-full h-full mt-5"
+        className="w-full h-full  mt-5"
       >
 
 
@@ -40,7 +40,9 @@ function SliderProduct({ title, products }) {
           if (products.length > 0) {
             
             return (
-              <SwiperSlide>
+              <SwiperSlide
+              className="my-4"
+              >
                 <CardProduct
                   name={product.title}
                   price={product.price}
