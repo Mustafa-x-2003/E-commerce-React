@@ -1,1 +1,71 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+/* font-family: "Inter", sans-serif; */
+/* font-family: "DM Sans", sans-serif; */
+
+.container {
+  width: 90%;
+  max-width: 1350px;
+  margin: auto;
+}
+:root {
+  --main-color: #0090f0;
+  --p-color: #7b7b7b;
+  --bg-color: #f3f3f3;
+  --white-color: #fff;
+  --color-heading: #253237;
+  --border-color: #d6d6d6d5;
+}
+img {
+  width: 100%;
+}
+body {
+  background: #fff;
+  font-family: "Inter", sans-serif;
+
+  overflow-x: hidden;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-heading);
+  font-family: "DM Sans", sans-serif;
+}
+p {
+  color: var(--p-color);
+}
+input,
+button,
+select,
+textarea {
+  outline: none;
+  border: none;
+}
+a {
+  text-decoration: none;
+}
+.heddin {
+  transition: all 0.3s;
+  right: -400px;
+}
+.show {
+  transition: all 0.3s;
+  right: 0;
+}
+.flexc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flexb {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+svg {
+  font-size: 24px;
+}

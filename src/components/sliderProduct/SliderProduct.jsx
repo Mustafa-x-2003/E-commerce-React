@@ -1,0 +1,59 @@
+import React, { useEffect, useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+
+// import required modules
+import { Pagination, Autoplay, Navigation } from "swiper/modules";
+// import Component
+import CardProduct from "./CardProduct";
+import ViewAllBtn from "../ViewAllBtn";
+
+function SliderProduct({ title, products }) {
+  
+  return (
+    <div className="container pt-35">
+      <h2 className="text-(--main-color)! text-3xl font-bold capitalize pb-3 flexb">
+        {title}
+        <ViewAllBtn/>
+      </h2>
+      
+
+      <Swiper
+        loop={true}
+        slidesPerView={5}
+        spaceBetween={30}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="w-full h-full mt-5"
+      >
+
+
+        {products.map((product) => {
+          if (products.length > 0) {
+            
+            return (
+              <SwiperSlide>
+                <CardProduct
+                  name={product.title}
+                  price={product.price}
+                  image={product.images[0]}
+                  id={product.id}
+                />
+              </SwiperSlide>
+            );
+          }
+        })}
+      </Swiper>
+    </div>
+  );
+}
+
+export default SliderProduct;
