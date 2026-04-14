@@ -25,8 +25,8 @@ function Header() {
       <Menu isShow={isShow} handelIsShow={handelMenu} />
 
       {/* search */}
-      <a href="#products">
-        <Search icon={<IoSearch />} />
+      <a href="#FEATUREDCOLLECTION">
+        <Search icon={<IoSearch />} placeholder={"Search Anything..."} />
       </a>
 
       {/* logo */}

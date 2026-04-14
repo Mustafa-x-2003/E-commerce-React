@@ -7,16 +7,9 @@ import { FaFacebook } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
 
-
 import Search from "./Search";
 
-
-const helps = [
-  "Help & Contact Us",
-  "Returns & Refunds",
-  "Online Stores",
-  "Terms & Conditions",
-];
+const helps = ["New Arrivals", "Best Sellers", "Sale", "Collections"];
 const About = ["About Us", "What We Do", "FAQ Page", "Contact Us"];
 function Footer() {
   return (
@@ -75,21 +68,25 @@ function Footer() {
           </div>
 
           <ul>
-            <h3 className="font-bold pb-4">Help & Information</h3>
+            <h3 className="font-bold pb-4">Shop</h3>
             {helps.map((h) => {
               return (
                 <li className="py-2">
-                  <Link class=" hover:text-(--main-color) transition-all duration-300">{h}</Link>
+                  <Link class=" hover:text-(--main-color) transition-all duration-300">
+                    {h}
+                  </Link>
                 </li>
               );
             })}
           </ul>
           <ul>
-            <h3 className="font-bold pb-4">About Us</h3>
+            <h3 className="font-bold pb-4">Support</h3>
             {About.map((h) => {
               return (
                 <li className="py-2">
-                  <Link class="hover:text-(--main-color) transition-all duration-300">{h}</Link>
+                  <Link class="hover:text-(--main-color) transition-all duration-300">
+                    {h}
+                  </Link>
                 </li>
               );
             })}
@@ -98,8 +95,10 @@ function Footer() {
           <div class="">
             <h3 class="font-bold pb-4">Newsletter</h3>
             <div className="py-10">
-
-            <Search icon={<FaArrowRight/>}/>
+              <Search
+                icon={<FaArrowRight />}
+                placeholder={"Your email address"}
+              />
             </div>
 
             <div class="wrapper">
@@ -116,13 +115,10 @@ function Footer() {
           </div>
         </div>
 
-        <div class="text-center py-5">
+        <div class="text-center py-8">
           <p class="copyright">
             &copy; 2022 All Rights Reserved by{" "}
-            <Link class="copyright-link">
-              NovaCart
-            </Link>
-            .
+            <Link class="copyright-link">NovaCart</Link>.
           </p>
         </div>
       </div>

@@ -1,11 +1,11 @@
 import React from "react";
 
-function Search({ icon }) {
+function Search({ icon , placeholder }) {
   return (
     <div className="flexb   transition duration-300">
       <input
         type="text"
-        placeholder="Search Anything..."
+        placeholder={placeholder}
         className="  peer pb-2  pr-2  border-b! border-(--border-color)! focus:border-(--main-color)! transition-all duration-300 "
       />
       <button

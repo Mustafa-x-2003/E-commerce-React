@@ -35,6 +35,7 @@ import image2 from "../images/blog-2.jpg";
 import image3 from "../images/blog-3.jpg";
 import SliderBlogs from "../components/sliderBlogs/SliderBlogs";
 import Footer from "../components/Footer";
+import Services from "../components/Services";
 const blogs = [
   {
     id: 1,
@@ -90,15 +91,18 @@ function Home() {
   }, []);
   return (
     <div>
+      {/* === Header === */}
       <Header />
+      {/* === Home === */}
       <HomeSlider />
-      <div id="products">
+      {/* === FEATURED COLLECTION === */}
+      <div id="FEATUREDCOLLECTION">
         {" "}
         {loadproducts ? (
           <p>load...</p>
         ) : (
           <SliderProduct
-            title={["products"]}
+            title={["FEATURED COLLECTION"]}
             description={""}
             products={categorys.map((c) => {
               return products[c][0];
@@ -106,6 +110,9 @@ function Home() {
           />
         )}
       </div>
+      {/* === Services === */}
+      <Services/>
+
 
       <SliderBlogs title={"Explore our blog"} blogs={blogs} />
       <Footer />

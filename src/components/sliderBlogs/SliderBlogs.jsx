@@ -17,7 +17,7 @@ import ViewAllBtn from ".././ViewAllBtn";
 function SliderBlogs({ title, blogs }) {
   
   return (
-    <div className="container pt-35">
+    <div className="container pt-20">
       <h2 className="text-(--main-color)! text-3xl font-bold capitalize  flexb">
         {title}
         <ViewAllBtn/>
