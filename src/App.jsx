@@ -1,10 +1,14 @@
 import React from "react";
-import Home from "./pages/Home";
+import Home from "./pages/HomePage";
 import { Route, Routes } from "react-router";
 import CartPage from "./pages/CartPage";
+import AllProductsPage from "./pages/AllProductsPage";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import {MyProviderContext} from "./components/contexts/Categorys";
+
+import ProductDetals from "./pages/ProductDetalsPage";
+import { MyProviderContext } from "./components/contexts/MyContext";
 
 function App() {
   return (
@@ -14,7 +18,10 @@ function App() {
         <Header />
         <Routes>
           <Route element={<Home />} path="/" />
-          <Route element={<CartPage />} path="/CartPage" />
+          <Route element={<AllProductsPage />} path="/AllProductsPage" />
+          
+          <Route element={<ProductDetals />} path={`/ProductDetals/:id`} />
+          <Route element={<CartPage />} path={"/CartPage"} />
         </Routes>
         <Footer />
       </MyProviderContext>

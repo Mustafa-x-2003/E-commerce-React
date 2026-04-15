@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Categorys from "./contexts/Categorys";
+import Categorys from "./contexts/MyContext";
 
 function Search({ icon, placeholder }) {
   const { search, setSearch } = useContext(Categorys);
@@ -7,7 +7,7 @@ function Search({ icon, placeholder }) {
     <div className="flexb   transition duration-300">
       <input
         onChange={(e) => {
-          setSearch(e.target.value.toUpperCase());
+          setSearch(e.target.value.toUpperCase().trim());
         }}
         value={search}
         type="text"

@@ -25,17 +25,17 @@ const allCategorys = [
   "womens-shoes",
   "womens-watches",
 ];
-const Categorys = createContext();
+const MyContext = createContext();
 export function MyProviderContext({ children }) {
   const [categorys, setCategorys] = useState(allCategorys);
-
   const [search, setSearch] = useState('');
+  const [productsCart, setProductsCart] = useState([]);
 
   return (
-    <Categorys.Provider value={{ categorys, setCategorys, search, setSearch }}>
+    <MyContext.Provider value={{ categorys, setCategorys, search, setSearch ,productsCart,setProductsCart}}>
       {children }
-    </Categorys.Provider>
+    </MyContext.Provider>
   );
 }
 
-export default Categorys;
+export default MyContext;

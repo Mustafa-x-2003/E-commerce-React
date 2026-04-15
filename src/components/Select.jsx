@@ -10,7 +10,7 @@ import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
-import Categorys from "../components/contexts/Categorys";
+import Categorys from "./contexts/MyContext";
 import { useState, useEffect } from "react";
 import { useContext } from "react";
 

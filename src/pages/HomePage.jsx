@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import HomeSlider from "../components/hero/HomeSlider";
 import SliderProduct from "../components/sliderProduct/SliderProduct";
 
+
 // categorys
 const categorys = [
   "beauty",

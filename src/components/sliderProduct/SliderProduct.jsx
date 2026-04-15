@@ -18,10 +18,8 @@ function SliderProduct({ title, products }) {
     <div className="container pt-35">
       <h2 className="text-(--main-color)! text-3xl font-bold capitalize  flexb">
         {title}
-        
-        
-        <ViewAllBtn path={"/CartPage"}/>
-       
+
+        <ViewAllBtn path={"/AllProductsPage"} />
       </h2>
 
       <Swiper
@@ -39,7 +37,7 @@ function SliderProduct({ title, products }) {
         {products.map((product) => {
           if (products.length > 0) {
             return (
-              <Link to={"/CartPage"}>
+              <Link to={"/ProductDetals"}>
                 <SwiperSlide className="my-4">
                   <CardProduct
                     name={product.title}

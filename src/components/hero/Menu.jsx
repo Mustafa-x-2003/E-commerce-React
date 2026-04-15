@@ -4,18 +4,6 @@ import { FaFacebook } from "react-icons/fa6";
 import { BsTwitterX } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router";
-/*
-
-
-
-
-
-
-
-
-
-
-*/
 const Language = ["English", "French", "Arabric"];
 const Currency = ["USD - US Dollar", "Euro", "Pound"];
 const LinksNav = [

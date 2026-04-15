@@ -14,23 +14,8 @@ const About = ["About Us", "What We Do", "FAQ Page", "Contact Us"];
 function Footer() {
   return (
     <div className="pt-20">
-      <div className="container bg-(--bg-color) flexb py-15 px-20 ">
-        <div>
-          <h2 className="text-2xl font-bold">Our Newsletter</h2>
-          <p>Subscribe our newsletter and get discount 50% off</p>
-        </div>
 
-        <div className="flexb   bg-(--white-color) pr-4 border-2 border-(--white-color) text-(--p-color) focus-within:text-(--main-color) transition-all duration-300 focus-within:border-2 focus-within:border-(--main-color)">
-          <input
-            type="text"
-            placeholder="Your email address"
-            className="placeholder:text-gray-400 w-150 p-4"
-          />
-          <FaArrowRight className="text-lg!" />
-        </div>
-      </div>
-
-      <div class="container pt-20 ">
+      <div class="container  ">
         <div class="footer-top section flexb gap-20">
           <div>
             <Link class="logo" className="text-2xl font-bold">
