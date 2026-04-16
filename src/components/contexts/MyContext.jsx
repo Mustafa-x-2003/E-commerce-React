@@ -28,16 +28,34 @@ const allCategorys = [
 const MyContext = createContext();
 export function MyProviderContext({ children }) {
   const [categorys, setCategorys] = useState(allCategorys);
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState("");
   const [productsCart, setProductsCart] = useState([]);
-  function handelCartItems(value){
-    setProductsCart((prev) =>([...prev,value]))
+  function handelCartItems(value) {
+    setProductsCart((prev) =>{
+      const ele = prev.find((e)=>{
+        return e.id === value.id
+        
+      })
+      if(ele){
+          return prev
+        }else{
+          return [...prev,value]
+        }
+    })
   }
-  
 
   return (
-    <MyContext.Provider value={{  categorys, setCategorys, search, setSearch ,productsCart , handelCartItems }}>
-      {children }
+    <MyContext.Provider
+      value={{
+        categorys,
+        setCategorys,
+        search,
+        setSearch,
+        productsCart,
+        handelCartItems,
+      }}
+    >
+      {children}
     </MyContext.Provider>
   );
 }

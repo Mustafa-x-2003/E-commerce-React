@@ -39,7 +39,7 @@ function Item({ image, title, price }) {
 
 function CartPage() {
   const { productsCart, setProductsCart } = useContext(MyContext);
-  const []
+  
   return (
     <div className="container gap-10 flex justify-between">
       <div className="w-[70%]">

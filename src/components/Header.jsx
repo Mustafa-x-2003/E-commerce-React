@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router";
 
 // === import icons ===
@@ -10,9 +10,11 @@ import { IoSearch } from "react-icons/io5";
 // === import components ===
 import Menu from "./hero/Menu";
 import Search from "./Search";
+import MyContext from "./contexts/MyContext";
 
 function Header() {
   const [isShow, setIsShow] = useState(false);
+  const { productsCart } = useContext(MyContext);
   function handelMenu(value) {
     setIsShow(value);
   }
@@ -48,7 +50,7 @@ function Header() {
             <Link to={"/CartPage"}>
               <BiShoppingBag className="cursor-pointer hover:text-(--main-color) transition-all duration-300" />
               <span className="absolute text-lg w-5 h-5 rounded-full flexc text-(--white-color) bg-(--main-color)  -bottom-2 -right-3 ">
-                0
+                {productsCart?productsCart.length:0}
               </span>
             </Link>
           </div>
