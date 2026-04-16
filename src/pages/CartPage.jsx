@@ -56,7 +56,9 @@ function Item({ image, title, price, id, handelDeleteItems }) {
 
 function CartPage() {
   const { productsCart, setProductsCart } = useContext(MyContext);
-
+  function handelDeleteItems(id) {
+    setProductsCart((prev) => prev.filter((p) => p.id !== id));
+  }
 
   return (
     <div className="container gap-10 flex justify-between">
@@ -66,7 +68,7 @@ function CartPage() {
             <Item
               image={p.image}
               id={p.id}
-
+              handelDeleteItems={handelDeleteItems}
               title={p.name}
               price={p.price}
             />
