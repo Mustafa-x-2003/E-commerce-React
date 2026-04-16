@@ -7,11 +7,11 @@ import { FaRegHeart } from "react-icons/fa";
 import { FaShare } from "react-icons/fa";
 import { Link } from "react-router";
 // context
-import MyContext from "../contexts/MyContext";
+import MyContext from "../contexts/MyContext"
 
 function Card({ name, price, image, id }) {
-  const { productsCart, setProductsCart } = useContext(MyContext);
-  console.log(useContext(MyContext));
+  const { handelCartItems } = useContext(MyContext);
+
 
   return (
     <div className=" text-center text-lg  border border-(--border-color) hover:border-(--main-color) hover:shadow-[0_0_10px_10px_rgba(0,0,0,0.1)] rounded-lg transition-all duration-300 flex flex-col items-start  relative group ">
@@ -20,8 +20,7 @@ function Card({ name, price, image, id }) {
         <div className="flex text-(--main-color) flex-col items-center justify-between gap-3 translate-x-16  group-hover:translate-x-0 opacity-100 group-hover:opacity-100 transition-all duration-300">
           <span
             onClick={() => {
-              setProductsCart((pre) => [...pre, id]);
-              console.log(productsCart);
+              handelCartItems({ name, price, image, id })
             }}
             className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
           >

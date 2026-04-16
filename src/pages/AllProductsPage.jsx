@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import Select from "../components/Select";
 import CardProduct from "../components/sliderProduct/CardProduct";
-import Categorys from "../components/contexts/MyContext";
+import MyContext from "../components/contexts/MyContext";
 import { useLocation, useParams } from "react-router";
 import ProductsContainer from "../components/ProductsContainer";
 
 function AllProductsPage() {
   const [products, setProductes] = useState(null);
-  const { categorys, setCategorys, search, setSearch } = useContext(Categorys);
+  const { categorys, setCategorys, search, setSearch } = useContext(MyContext);
   const [loadProducts, setLoadProductes] = useState(true);
 
   if (!loadProducts) {
@@ -38,7 +38,7 @@ function AllProductsPage() {
   }, [categorys]);
   useEffect(() => {}, []);
   return (
-    <Categorys.Provider value={{ categorys, setCategorys }}>
+
       <div className="container flex py-10">
         <div className="w-[20%]">
           <Select />
@@ -74,7 +74,7 @@ function AllProductsPage() {
         </ProductsContainer>
         
       </div>
-    </Categorys.Provider>
+
   );
 }
 

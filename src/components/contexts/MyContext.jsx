@@ -30,9 +30,13 @@ export function MyProviderContext({ children }) {
   const [categorys, setCategorys] = useState(allCategorys);
   const [search, setSearch] = useState('');
   const [productsCart, setProductsCart] = useState([]);
+  function handelCartItems(value){
+    setProductsCart((prev) =>([...prev,value]))
+  }
+  
 
   return (
-    <MyContext.Provider value={{ categorys, setCategorys, search, setSearch ,productsCart,setProductsCart}}>
+    <MyContext.Provider value={{  categorys, setCategorys, search, setSearch ,productsCart , handelCartItems }}>
       {children }
     </MyContext.Provider>
   );
