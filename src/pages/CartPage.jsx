@@ -11,12 +11,12 @@ function Item({ image, title, price, id, handelDeleteItems }) {
   const [count, setCount] = useState(1);
 
   return (
-    <div className="flex py-10 border-b border-(--border-color) last:border-0">
-      <div className="w-[12%] border border-(--border-color) rounded-xl">
+    <div className="flex  py-10 border-b border-(--border-color) last:border-0">
+      <div className="w-[10%] border border-(--border-color) rounded-xl">
         <img src={image} alt="" />
       </div>
-      <div className="w-[80%] px-4 flex flex-col justify-between ">
-        <h2 className=" flexb w-full font-bold text-xl">
+      <div className="w-full px-4 flex flex-col justify-between ">
+        <h2 className="  flexb w-full font-bold text-xl">
           <span>{title}</span>
           <span className="text-(--main-color)!">${price}</span>
         </h2>
@@ -65,41 +65,50 @@ function CartPage() {
     setProductsCart((prev) => prev.filter((p) => p.id !== id));
   }
 
+  const suptotal = Math.floor(
+    productsCart.reduce((acc, current) => {
+      return acc + current.price;
+    }, 0),
+  );
+  const Estimated = Math.floor(suptotal / 50);
   return (
     <div className="container  ">
-      <div className="py-10">
-        <p className="flexb text-lg gap-2 w-fit">
-          <span className="bg-blue-200 py-1 font-medium text-(--main-color) px-4 text-sm rounded-full">
-            Step 1 of 3
-          </span>{" "}
-          Shopping Cart
-        </p>
-        <h2 className="text-2xl flexb font-bold">
+      <div className="py-10 ">
+        <h2 className="text-3xl pt-4 flexb font-bold">
           Your Selection
-          <p className="text-lg font-medium"> <span className="text-(--main-color)">3</span> items in your cart</p>
+          <p className="text-lg font-medium">
+            <span className="text-(--main-color) ">
+              {productsCart.length + " "}
+            </span>
+            items in your cart
+          </p>
         </h2>
       </div>
-      <div className=" h-150 gap-10 flex justify-between">
-        <div className="w-[70%]  rounded-2xl px-4  overflow-y-scroll">
-          {productsCart.map((p) => {
-            return (
-              <Item
-                image={p.image}
-                id={p.id}
-                handelDeleteItems={handelDeleteItems}
-                title={p.name}
-                price={p.price}
-              />
-            );
-          })}
+
+      <div className=" h-170 gap-4 flex justify-between">
+        <div className="w-[70%] shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] rounded-2xl px-4 ">
+          <div className="  overflow-y-scroll h-full ">
+            {productsCart.map((p) => {
+              return (
+                <Item
+                  image={p.image}
+                  id={p.id}
+                  handelDeleteItems={handelDeleteItems}
+                  title={p.name}
+                  price={p.price}
+                />
+              );
+            })}
+          </div>
         </div>
+
         <div className="w-[30%] h-fit   px-4 bg-(--white-color) shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] rounded-2xl ">
           <div className="py-2">
             <h2 className="text-xl font-bold py-8">Order Summary</h2>
             <p className="flexb py-2">
               Suptotal:{" "}
               <span className="text-xl font-bold text-(--color-heading) ">
-                $10
+                ${suptotal}
               </span>
             </p>
             <p className="py-2 flexb">
@@ -111,7 +120,7 @@ function CartPage() {
             <p className="py-2 flexb">
               Estimated Tax{" "}
               <span className="text-xl font-bold text-(--color-heading)  ">
-                $70
+                ${Estimated}
               </span>
             </p>
           </div>
@@ -123,7 +132,7 @@ function CartPage() {
                 <span>(Including VAT)</span>
               </p>
               <span className="text-xl font-bold text-(--color-heading)">
-                $9999
+                ${suptotal - Estimated}
               </span>
             </div>
 

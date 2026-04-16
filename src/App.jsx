@@ -16,13 +16,16 @@ function App() {
       <MyProviderContext>
         {/* === Header === */}
         <Header />
-        <Routes>
-          <Route element={<Home />} path="/" />
-          <Route element={<AllProductsPage />} path="/AllProductsPage" />
-          
-          <Route element={<ProductDetals />} path={`/ProductDetals/:id`} />
-          <Route element={<CartPage />} path={"/CartPage"} />
-        </Routes>
+        <div className="pt-20 ">
+          <Routes>
+            <Route element={<Home />} path="/" />
+            <Route element={<AllProductsPage />} path="/AllProductsPage" />
+
+            <Route element={<ProductDetals />} path={`/ProductDetals/:id`} />
+            <Route element={<CartPage />} path={"/CartPage"} />
+          </Routes>
+        </div>
+
         <Footer />
       </MyProviderContext>
     </>

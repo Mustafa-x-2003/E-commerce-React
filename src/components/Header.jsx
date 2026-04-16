@@ -19,7 +19,7 @@ function Header() {
     setIsShow(value);
   }
   return (
-    <div className="">
+    <div className="fixed w-full left-0 bg-(--white-color) shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] z-1000 ">
       <div className="container flexb py-8 overflow-hidden ">
         {/* Menu */}
         <div

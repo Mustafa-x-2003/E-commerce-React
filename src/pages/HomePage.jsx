@@ -90,8 +90,9 @@ function Home() {
     };
     fetchProducts();
   }, []);
+
   return (
-    <div>
+    <div className="">
       {/* === Home === */}
       <HomeSlider />
       {/* === FEATURED COLLECTION === */}
