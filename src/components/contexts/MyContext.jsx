@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 const allCategorys = [
   "beauty",
   "fragrances",
@@ -27,21 +27,58 @@ const allCategorys = [
 ];
 const MyContext = createContext();
 export function MyProviderContext({ children }) {
-  const [categorys, setCategorys] = useState(allCategorys);
-  const [search, setSearch] = useState("");
-  const [productsCart, setProductsCart] = useState([]);
+  // === Categorys ===
+  const [categorys, setCategorys] = useState(() => {
+    try {
+      const data = localStorage.getItem("category");
+      return data ? JSON.parse(data) : allCategorys;
+    } catch (error) {
+      console.log("localstorasge categorys", error);
+      return allCategorys;
+    }
+  });
+  useEffect(() => {
+    localStorage.setItem("category", JSON.stringify(categorys));
+  }, [categorys]);
+  // === search ===
+  const [search, setSearch] = useState(() => {
+    try {
+      const data = localStorage.getItem("search");
+      return data ? JSON.parse(data) : "";
+    } catch (error) {
+      console.log("localstorage search", error);
+      return "";
+    }
+  });
+  useEffect(() => {
+    localStorage.setItem("search", JSON.stringify(search));
+  }, [search]);
+
+  // === productsCart ===
+
+  const [productsCart, setProductsCart] = useState(() => {
+    try {
+      const data = localStorage.getItem("productsCart");
+      return data ? JSON.parse(data) : [];
+    } catch (error) {
+      console.log("localstorage cartitems", error);
+      return [];
+    }
+  });
+  useEffect(()=>{
+    localStorage.setItem('productsCart',JSON.stringify(productsCart))
+  },[productsCart])
   function handelCartItems(value) {
-    setProductsCart((prev) =>{
-      const ele = prev.find((e)=>{
-        return e.id === value.id
-        
-      })
-      if(ele){
-          return prev
-        }else{
-          return [...prev,value]
-        }
-    })
+    setProductsCart((prev) => {
+      const ele = prev.find((e) => {
+        return e.id === value.id;
+      });
+      if (ele) {
+        return prev;
+      } else {
+        return [...prev, value];
+      }
+    });
   }
 
   return (
@@ -53,6 +90,7 @@ export function MyProviderContext({ children }) {
         setSearch,
         productsCart,
         handelCartItems,
+        setProductsCart,
       }}
     >
       {children}
