@@ -8,7 +8,7 @@ const Language = ["English", "French", "Arabric"];
 const Currency = ["USD - US Dollar", "Euro", "Pound"];
 const LinksNav = [
   { name: "Home", path: "/" },
-  { name: "About", path: "/About" },
+  { name: "AllProduct", path: "/AllProductsPage" },
   { name: "Product", path: "/Product" },
   { name: "Blogs", path: "/Blogs" },
   { name: "Contact Us", path: "/Contact" },
