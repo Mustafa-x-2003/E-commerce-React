@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 // Icons
 import { GoDash } from "react-icons/go";
 import { FaPlus } from "react-icons/fa6";
@@ -7,35 +7,37 @@ import MyContext from "../components/contexts/MyContext";
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { Link } from "react-router";
 
-function Item({ image, title, price, id, handelDeleteItems }) {
-  const [count, setCount] = useState(1);
+function Item({ product, handelDeleteItems }) {
+  const { handelPlusCounter, handelMinusCounter } = useContext(MyContext);
 
   return (
     <div className="flex  py-10 border-b border-(--border-color) last:border-0">
       <div className="w-[10%] border border-(--border-color) rounded-xl">
-        <img src={image} alt="" />
+        <img src={product.image} alt="" />
       </div>
       <div className="w-full px-4 flex flex-col justify-between ">
         <h2 className="  flexb w-full font-bold text-xl">
-          <span>{title}</span>
-          <span className="text-(--main-color)!">${price}</span>
+          <span>{product.name}</span>
+          <span className="text-(--main-color)!">
+            ${Math.floor(product.price) * product.count}
+          </span>
         </h2>
         <div className="flexb p">
           <span className="flexb w-fit border rounded-lg border-(--border-color)">
             <span
               onClick={() => {
-                if (count !== 1) setCount(count - 1);
+                handelMinusCounter(product.id);
               }}
               className="hover:text-(--main-color) text-(--p-color) text-2xl w-8 h-8  flexc cursor-pointer"
             >
               <GoDash />
             </span>
             <span className="w-8 flexc overflow-hidden text-(--main-color)! font-bold">
-              {count}{" "}
+              {product.count}{" "}
             </span>
             <span
               onClick={() => {
-                setCount(count + 1);
+                handelPlusCounter(product.id);
               }}
               className="hover:text-(--main-color) text-(--p-color) w-8 h-8  flexc cursor-pointer"
             >
@@ -45,7 +47,7 @@ function Item({ image, title, price, id, handelDeleteItems }) {
           <button className="flexb gap-2 hover:text-red-700">
             <p
               onClick={() => {
-                handelDeleteItems(id);
+                handelDeleteItems(product.id);
               }}
               className=" text-xl cursor-pointer   flexc gap-2 rounded-lg hover:text-red-600! transition-all duration-300"
             >
@@ -61,20 +63,21 @@ function Item({ image, title, price, id, handelDeleteItems }) {
 
 function CartPage() {
   const { productsCart, setProductsCart } = useContext(MyContext);
+
   function handelDeleteItems(id) {
     setProductsCart((prev) => prev.filter((p) => p.id !== id));
   }
 
   const suptotal = Math.floor(
     productsCart.reduce((acc, current) => {
-      return acc + current.price;
+      return acc + Math.floor(current.price) * current.count;
     }, 0),
   );
   const Estimated = Math.floor(suptotal / 50);
   return (
     <div className="container  ">
-      <div className="py-10 ">
-        <h2 className="text-3xl pt-4 flexb font-bold">
+      <div className="pb-10 ">
+        <h2 className="text-3xl pt-4  flexb font-bold">
           Your Selection
           <p className="text-lg font-medium">
             <span className="text-(--main-color) ">
@@ -89,15 +92,7 @@ function CartPage() {
         <div className="w-[70%] shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] rounded-2xl px-4 ">
           <div className="  overflow-y-scroll h-full ">
             {productsCart.map((p) => {
-              return (
-                <Item
-                  image={p.image}
-                  id={p.id}
-                  handelDeleteItems={handelDeleteItems}
-                  title={p.name}
-                  price={p.price}
-                />
-              );
+              return <Item product={p} handelDeleteItems={handelDeleteItems} />;
             })}
           </div>
         </div>

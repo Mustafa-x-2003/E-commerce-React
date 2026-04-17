@@ -7,7 +7,7 @@ import ProductsContainer from "../components/ProductsContainer";
 
 function AllProductsPage() {
   const [products, setProductes] = useState(null);
-  const { categorys, setCategorys, search, setSearch } = useContext(MyContext);
+  const { categorys, search } = useContext(MyContext);
   const [loadProducts, setLoadProductes] = useState(true);
 
   if (!loadProducts) {
@@ -38,12 +38,12 @@ function AllProductsPage() {
   }, [categorys]);
   useEffect(() => {}, []);
   return (
-
-      <div className="container flex py-10">
-        <div className="w-[20%]">
-          <Select />
-        </div>
-        <ProductsContainer>
+    <div className="container flex py-10">
+      <div className="w-[20%]">
+        <Select />
+      </div>
+      <div className="h-200 overflow-y-scroll">
+        <ProductsContainer colsCount={"grid-cols-4"}>
           {loadProducts ? (
             <p>load..</p>
           ) : search === "" ? (
@@ -72,9 +72,8 @@ function AllProductsPage() {
             })
           )}
         </ProductsContainer>
-        
       </div>
-
+    </div>
   );
 }
 

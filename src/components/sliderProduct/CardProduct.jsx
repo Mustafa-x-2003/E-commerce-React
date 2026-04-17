@@ -5,13 +5,14 @@ import { MdStar } from "react-icons/md";
 import { FaCartArrowDown } from "react-icons/fa6";
 import { FaRegHeart } from "react-icons/fa";
 import { FaShare } from "react-icons/fa";
+import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router";
 // context
-import MyContext from "../contexts/MyContext"
+import MyContext from "../contexts/MyContext";
 
-function Card({ name, price, image, id }) {
-  const { handelCartItems } = useContext(MyContext);
-
+function Card({ name, price, image, id, handelDeleteItems }) {
+  const { handelAddItemsToCart, handelAddItemsToFavorite } =
+    useContext(MyContext);
 
   return (
     <div className=" text-center text-lg  border border-(--border-color) hover:border-(--main-color) hover:shadow-[0_0_10px_10px_rgba(0,0,0,0.1)] rounded-lg transition-all duration-300 flex flex-col items-start  relative group ">
@@ -20,18 +21,34 @@ function Card({ name, price, image, id }) {
         <div className="flex text-(--main-color) flex-col items-center justify-between gap-3 translate-x-16  group-hover:translate-x-0 opacity-100 group-hover:opacity-100 transition-all duration-300">
           <span
             onClick={() => {
-              handelCartItems({ name, price, image, id })
+              handelAddItemsToCart({ name, price, image, id });
             }}
             className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
           >
             <FaCartArrowDown />
           </span>
-          <span className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)">
+          <span
+            onClick={() => {
+              handelAddItemsToFavorite({ name, price, image, id });
+            }}
+            className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
+          >
             <FaRegHeart />
           </span>
-          <span className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)">
-            <FaShare />
-          </span>
+          {handelDeleteItems ? (
+            <span 
+            onClick={()=>{
+              handelDeleteItems(id)
+            }}
+            
+            className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)">
+              <RiDeleteBin6Line />
+            </span>
+          ) : (
+            <span className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)">
+              <FaShare />
+            </span>
+          )}
         </div>
       </div>
       {/* === Icons === */}

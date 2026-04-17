@@ -27,8 +27,8 @@ function union(a, b) {
 }
 
 export default function Select() {
-    const {categorys , setCategorys} = useContext(Categorys)
-  const [checked, setChecked] = React.useState([]);
+  const { categorys, setCategorys, isDefault } = useContext(Categorys);
+  const [checked, setChecked] = React.useState(isDefault ? [] : categorys);
   const [left, setLeft] = useState([]);
   useEffect(() => {
     async function fetchCategory() {
@@ -43,9 +43,9 @@ export default function Select() {
     fetchCategory();
   }, []);
 
-  useEffect(()=>{
-    setCategorys(checked)
-  },[checked])
+  useEffect(() => {
+    setCategorys(checked);
+  }, [checked]);
 
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
