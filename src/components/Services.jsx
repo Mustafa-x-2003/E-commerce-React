@@ -4,7 +4,7 @@ import { FaTruck } from "react-icons/fa";
 import { LuShieldCheck } from "react-icons/lu";
 import { LuCircleCheckBig } from "react-icons/lu";
 function Item({ icon, title, desc }) {
-  return <div className="flexb gap-5">
+  return <div className="flexb gap-3 p-4">
     <span className="bg-blue-200 text-2xl p-3 rounded-xl text-(--main-color)">
         {icon}
     </span>
@@ -34,7 +34,7 @@ const services = [
 function Services() {
   return (
     <div className="bg-(--bg-color) mt-20">
-      <div className="container flexb py-15">
+      <div className="container flexb flex-wrap py-10">
         {services.map((s)=>{
             return(
                 <Item icon={s.icon} title={s.title} desc={s.desc}/>

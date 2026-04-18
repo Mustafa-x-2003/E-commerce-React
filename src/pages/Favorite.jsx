@@ -51,7 +51,7 @@ function Favorite() {
 
   return (
 
-      <ProductsContainer colsCount={'grid-cols-5'}>
+      <ProductsContainer gridStile={"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"}>
         {productsFavorite.map((p) => {
           return (
             <CardProduct

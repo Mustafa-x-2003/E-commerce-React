@@ -11,18 +11,18 @@ function Item({ product, handelDeleteItems }) {
   const { handelPlusCounter, handelMinusCounter } = useContext(MyContext);
 
   return (
-    <div className="flex  py-10 border-b border-(--border-color) last:border-0">
-      <div className="w-[10%] border border-(--border-color) rounded-xl">
+    <div className="flex flex-col lg:flex-row  py-10 border-b border-(--border-color) last:border-0">
+      <div className=" lg:w-[10%] border border-(--border-color) rounded-xl">
         <img src={product.image} alt="" />
       </div>
       <div className="w-full px-4 flex flex-col justify-between ">
-        <h2 className="  flexb w-full font-bold text-xl">
-          <span>{product.name}</span>
+        <h2 className=" py-8  lg:p-0 flexb w-full font-bold md:text-xl">
+          <span className="w-60 truncate text-start lg:w-full ">{product.name}</span>
           <span className="text-(--main-color)!">
             ${Math.floor(product.price) * product.count}
           </span>
         </h2>
-        <div className="flexb p">
+        <div className=" flexb ">
           <span className="flexb w-fit border rounded-lg border-(--border-color)">
             <span
               onClick={() => {
@@ -77,9 +77,9 @@ function CartPage() {
   return (
     <div className="container  ">
       <div className="pb-10 ">
-        <h2 className="text-3xl pt-4  flexb font-bold">
+        <h2 className="text-lg md:text-2xl lg:text-3xl pt-4  flexb font-bold">
           Your Selection
-          <p className="text-lg font-medium">
+          <p className="text-sm md:text-lg font-medium">
             <span className="text-(--main-color) ">
               {productsCart.length + " "}
             </span>
@@ -88,16 +88,16 @@ function CartPage() {
         </h2>
       </div>
 
-      <div className=" h-170 gap-4 flex justify-between">
-        <div className="w-[70%] shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] rounded-2xl px-4 ">
-          <div className="  overflow-y-scroll h-full ">
+      <div className="lg:h-170 gap-4 flex flex-col lg:flex-row md:justify-between ">
+        <div className="w-full  lg:[60%] xl:w-[70%] shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] rounded-2xl px-4 ">
+          <div className=" md:grid grid-cols-2 sm: gap-4 lg:block md:overflow-y-scroll h-full ">
             {productsCart.map((p) => {
               return <Item product={p} handelDeleteItems={handelDeleteItems} />;
             })}
           </div>
         </div>
 
-        <div className="w-[30%] h-fit   px-4 bg-(--white-color) shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] rounded-2xl ">
+        <div className="mt-5 md:m-0  lg:w-[40%] xl:w-[30%] h-fit   px-4 bg-(--white-color) shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] rounded-2xl ">
           <div className="py-2">
             <h2 className="text-xl font-bold py-8">Order Summary</h2>
             <p className="flexb py-2">
@@ -122,20 +122,19 @@ function CartPage() {
 
           <div className="py-4 flex flex-col gap-2 border-t-2 border-(--border-color)">
             <div className="flexb pt-2 pb-4 ">
-              <p className="flexb gap-2">
+              <p className="flexb">
                 <span>Total Price</span>
-                <span>(Including VAT)</span>
               </p>
-              <span className="text-xl font-bold text-(--color-heading)">
-                ${suptotal - Estimated}
+              <span className="text-xl  font-bold text-(--color-heading)">
+                ${suptotal - Estimated}33333
               </span>
             </div>
 
             <Link className="flexc font-bold py-4 gap-2 border-2 border-(--main-color) bg-(--main-color) text-(--white-color) rounded-lg  hover:bg-transparent hover:text-(--main-color) transition-all duration-300">
-              <span>Proceed to Checkout</span>
+              <span className="lg:text-sm">Proceed to Checkout</span>
               <IoArrowForwardOutline />
             </Link>
-            <Link className="flexc font-bold py-4 gap-2 border-2 border-(--main-color) bg-transparent  rounded-lg  text-(--main-color)">
+            <Link className="lg:text-sm flexc font-bold py-4 gap-2 border-2 border-(--main-color) bg-transparent  rounded-lg  text-(--main-color)">
               Continue Shopping
             </Link>
           </div>

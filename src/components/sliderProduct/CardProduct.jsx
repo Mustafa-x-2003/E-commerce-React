@@ -54,7 +54,7 @@ function Card({ name, price, image, id, handelDeleteItems }) {
       {/* === Icons === */}
 
       <Link to={`/ProductDetals/${id}`}>
-        <div className="flex  items-center justify-center pt-6 pb-7 px-9  ">
+        <div className="flexc pt-6 pb-7 px-9  ">
           <img src={image} alt="" />
         </div>
 

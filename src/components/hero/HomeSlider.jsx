@@ -18,7 +18,7 @@ const images = [bannar1, bannar2, bannar3];
 
 function HomeSlider() {
   return (
-    <section className="container h-140">
+    <section className="container h-[300px] sm:h-[400px] lg:h-[500px]">
       <Swiper
         loop={true}
         autoplay={{
@@ -27,12 +27,12 @@ function HomeSlider() {
         }}
         pagination={true}
         modules={[Pagination, Autoplay]}
-        className="w-full h-full"
+        className="w-full"
       >
         {images.map((image) => {
           return (
             <SwiperSlide className="relative text-center text-lg flex items-center justify-center overflow-hidden">
-              <div className="absolute top-0 left-0 h-full content-center p-15 text-start">
+              <div className="absolute top-0 left-0 h-full content-center sm:p-16 text-start">
                 <h4 className="text-[1vw] pb-[0.4vw] italic font-normal ">
                   INTRODUCING THE NEW
                 </h4>
@@ -41,7 +41,7 @@ function HomeSlider() {
                   <br />
                   360 Controller
                 </h2>
-                <p className="py-[2.5vw]">Windows Xp/10/7/8 Ps3, Tv Box</p>
+                <p className="py-[2.5vw] sm:p-5 sm:text-sm">Windows Xp/10/7/8 Ps3, Tv Box</p>
                 <button className="bg-(--main-color) py-2 px-4  rounded-full hover:scale-110 transition duration-300">
                   <Link to={"/"} className="text-(--white-color)!">
                     Shop Now

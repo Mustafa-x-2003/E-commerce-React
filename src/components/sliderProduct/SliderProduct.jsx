@@ -16,7 +16,7 @@ import { Link } from "react-router";
 function SliderProduct({ title, products }) {
   return (
     <div className="container pt-35">
-      <h2 className="text-(--main-color)! text-3xl font-bold capitalize  flexb">
+      <h2 className="text-(--main-color)! text-xl font-bold capitalize  flexb">
         {title}
 
         <ViewAllBtn path={"/AllProductsPage"} />
@@ -24,7 +24,23 @@ function SliderProduct({ title, products }) {
 
       <Swiper
         loop={true}
-        slidesPerView={5}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
+          1280: {
+            slidesPerView: 5,
+          },
+        }}
         spaceBetween={30}
         autoplay={{
           delay: 2500,
@@ -32,7 +48,7 @@ function SliderProduct({ title, products }) {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="w-full h-full  mt-5"
+        className="mt-5"
       >
         {products.map((product) => {
           if (products.length > 0) {

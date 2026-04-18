@@ -16,7 +16,7 @@ function Footer() {
     <div className="pt-20">
 
       <div class="container  ">
-        <div class="footer-top section flexb gap-20">
+        <div class=" flexb flex-wrap  gap-20">
           <div>
             <Link class="logo" className="text-2xl font-bold">
               NovaCart
@@ -52,7 +52,7 @@ function Footer() {
             </ul>
           </div>
 
-          <ul>
+          <ul className="w-full md:w-auto">
             <h3 className="font-bold pb-4">Shop</h3>
             {helps.map((h) => {
               return (
@@ -99,6 +99,15 @@ function Footer() {
             </div>
           </div>
         </div>
+
+
+
+
+
+
+
+
+
 
         <div class="text-center py-8">
           <p class="copyright">

@@ -20,7 +20,7 @@ function Header() {
   }
   return (
     <div className="fixed w-full left-0 bg-(--white-color) shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] z-1000 ">
-      <div className="container flexb py-8 overflow-hidden ">
+      <div className="container flexb py-4 lg:py-8 overflow-hidden ">
         {/* Menu */}
         <div
           className={`w-full h-screen z-10   fixed top-0 left-0 bg-[rgba(0,0,0,.7)] ${isShow ? "block" : "hidden"} `}
