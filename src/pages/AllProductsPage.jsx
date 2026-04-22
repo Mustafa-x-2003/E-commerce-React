@@ -3,9 +3,11 @@ import Select from "../components/Select";
 import CardProduct from "../components/sliderProduct/CardProduct";
 import MyContext from "../components/contexts/MyContext";
 import ProductsContainer from "../components/ProductsContainer";
+import { IoMenuSharp } from "react-icons/io5";
 
 function AllProductsPage() {
   const [products, setProductes] = useState(null);
+  const [isShowFilter, setIsShowFilter] = useState(false);
   const { categorys, search } = useContext(MyContext);
   const [loadProducts, setLoadProductes] = useState(true);
 
@@ -18,6 +20,8 @@ function AllProductsPage() {
               `https://dummyjson.com/products/category/${c}`,
             );
             const data = await res.json();
+            console.log(categorys, "all");
+
             return data.products;
           }),
         );
@@ -32,28 +36,33 @@ function AllProductsPage() {
     fetchProducts();
   }, [categorys]);
   return (
-    <div className="container flex ">
-      <div className="w-[20%]">
-        <Select />
+    <div className="container">
+      <div className=" fixed top-28 md:top-39 pt-3 pb-10 container w-full z-50 bg-(--white-color) ">
+        <span
+          onClick={() => {
+            setIsShowFilter(!isShowFilter);
+          }}
+          className="flexb gap-2 w-fit rounded-xl cursor-pointer border-2  border-(--main-color)    text-(--main-color) py-1 px-4 text-center"
+        >
+          <IoMenuSharp /> Filter
+        </span>
+        <div className="bg-(--white-color) relative ">
+          <div
+            className={`${isShowFilter ? "left-0" : "-left-75 lg:-left-130 xl:-left-100 "} z-50  transition-all duration-500   absolute top-4    w-fit  `}
+          >
+            <Select />
+          </div>
+        </div>
       </div>
 
-      <ProductsContainer gridStile={"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"}>
-        {loadProducts ? (
-          <p>load..</p>
-        ) : search === "" ? (
-          products.map((p) => {
-            return (
-              <CardProduct
-                name={p.title}
-                price={p.price}
-                image={p.images?.[0]}
-                id={p.id}
-              />
-            );
-          })
-        ) : (
-          products.map((p) => {
-            if (p.title.startsWith(search)) {
+      <div className="pt-16">
+        <ProductsContainer
+          gridStile={"grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"}
+        >
+          {loadProducts ? (
+            <p>load..</p>
+          ) : search === "" ? (
+            products.map((p) => {
               return (
                 <CardProduct
                   name={p.title}
@@ -62,10 +71,23 @@ function AllProductsPage() {
                   id={p.id}
                 />
               );
-            }
-          })
-        )}
-      </ProductsContainer>
+            })
+          ) : (
+            products.map((p) => {
+              if (p.title.startsWith(search)) {
+                return (
+                  <CardProduct
+                    name={p.title}
+                    price={p.price}
+                    image={p.images?.[0]}
+                    id={p.id}
+                  />
+                );
+              }
+            })
+          )}
+        </ProductsContainer>
+      </div>
     </div>
   );
 }

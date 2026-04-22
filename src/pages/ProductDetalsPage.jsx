@@ -51,14 +51,14 @@ function ProductDetals() {
       {loadproduct ? (
         <p>Loading...</p>
       ) : (
-        <div id="productDetails" className="flex justify-between gap-10 pb-10">
-          <div className="flex h-117.5  w-[40%] flex-col   items-center">
+        <div id="productDetails" className="flex flex-col md:flex-row  justify-between gap-10 md:pb-10">
+          <div className="flex self-center h-117.5  md:w-[40%] flex-col   items-center">
             <div className="w-full  flex items-center justify-center ">
               <img
                 id={"bigImage"}
                 src={product.images[0]}
                 alt=""
-                className="w-auto! h-112.5 mb-5"
+                className="w-auto! h-112.5 md:mb-5"
               />
             </div>
 
@@ -80,8 +80,8 @@ function ProductDetals() {
             </div>
           </div>
 
-          <div className="flex flex-col justify-center w-[58%] py-12.5">
-            <h2 className="text-3xl font-bold text-(--main-color)! py-5">
+          <div className="flex flex-col justify-center md:w-[58%] py-12.5">
+            <h2 className="text-xl truncate w-full md:text-3xl font-bold text-(--main-color)! py-5">
               {product.title}
             </h2>
             <h2 className="flex text-2xl text-yellow-400! py-2">

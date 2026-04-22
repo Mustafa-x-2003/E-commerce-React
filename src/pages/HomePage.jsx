@@ -6,31 +6,11 @@ import SliderProduct from "../components/sliderProduct/SliderProduct";
 
 // categorys
 const categorys = [
-  "beauty",
-  "fragrances",
-  "furniture",
-  "groceries",
-  "home-decoration",
-  "kitchen-accessories",
   "laptops",
-  "mens-shirts",
-  "mens-shoes",
-  "mens-watches",
-  "mobile-accessories",
-  "motorcycle",
-  "skin-care",
   "smartphones",
-  "sports-accessories",
-  "sunglasses",
   "tablets",
-  "tops",
-  "vehicle",
-  "womens-bags",
-  "womens-dresses",
-  "womens-jewellery",
-  "womens-shoes",
-  "womens-watches",
-];
+  "mobile-accessories"
+]
 import image1 from "../images/blog-1.jpg";
 import image2 from "../images/blog-2.jpg";
 import image3 from "../images/blog-3.jpg";

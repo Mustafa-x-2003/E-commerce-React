@@ -37,9 +37,7 @@ function SliderProduct({ title, products }) {
           1024: {
             slidesPerView: 4,
           },
-          1280: {
-            slidesPerView: 5,
-          },
+        
         }}
         spaceBetween={30}
         autoplay={{

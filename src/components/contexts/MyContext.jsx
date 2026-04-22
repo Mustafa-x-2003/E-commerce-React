@@ -1,30 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 const allCategorys = [
-  "beauty",
-  "fragrances",
-  "furniture",
-  "groceries",
-  "home-decoration",
-  "kitchen-accessories",
   "laptops",
-  "mens-shirts",
-  "mens-shoes",
-  "mens-watches",
-  "mobile-accessories",
-  "motorcycle",
-  "skin-care",
   "smartphones",
-  "sports-accessories",
-  "sunglasses",
   "tablets",
-  "tops",
-  "vehicle",
-  "womens-bags",
-  "womens-dresses",
-  "womens-jewellery",
-  "womens-shoes",
-  "womens-watches",
-];
+  "mobile-accessories"
+]
 const MyContext = createContext();
 export function MyProviderContext({ children }) {
   // === Categorys ===

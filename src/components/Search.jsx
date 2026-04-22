@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import Categorys from "./contexts/MyContext";
 
-function Search({ icon, placeholder }) {
+function Search({ width,icon, placeholder }) {
   const { search, setSearch } = useContext(Categorys);
   return (
-    <div className="flexb   transition duration-300">
+    <div className={`flexb ${width} py-2 px-4 rounded-xl border border-(--border-color) focus-within:border-(--main-color)! w-full transition duration-300`}>
       <input
         onChange={(e) => {
           setSearch(e.target.value.toUpperCase().trim());
@@ -12,13 +12,12 @@ function Search({ icon, placeholder }) {
         value={search}
         type="text"
         placeholder={placeholder}
-        className="  peer pb-2  pr-2  border-b! border-(--border-color)! focus:border-(--main-color)! transition-all duration-300 "
+        className="  peer  w-full pr-2   transition-all duration-300 "
       />
       <button
         onClick={() => {
-          console.log("ggg");
         }}
-        className="flexc  text-xl w-10  cursor-pointer peer-focus:text-blue-500 transition-all duration-300 text-(--border-color)"
+        className=" text-2xl  cursor-pointer peer-focus:text-blue-500 transition-all duration-300 text-(--border-color)"
       >
         {icon}
       </button>

@@ -10,7 +10,7 @@ import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
-import Categorys from "./contexts/MyContext";
+import MyContext from "./contexts/MyContext";
 import { useState, useEffect } from "react";
 import { useContext } from "react";
 
@@ -27,21 +27,10 @@ function union(a, b) {
 }
 
 export default function Select() {
-  const { categorys, setCategorys, isDefault } = useContext(Categorys);
+  const { categorys, setCategorys, isDefault } = useContext(MyContext);
   const [checked, setChecked] = React.useState(isDefault ? [] : categorys);
-  const [left, setLeft] = useState([]);
-  useEffect(() => {
-    async function fetchCategory() {
-      try {
-        const res = await fetch("https://dummyjson.com/products/category-list");
-        const data = await res.json();
-        setLeft(data);
-      } catch (erroe) {
-        console.log("fetch category", erroe);
-      }
-    }
-    fetchCategory();
-  }, []);
+  const [left, setLeft] = useState(categorys);
+
 
   useEffect(() => {
     setCategorys(checked);
@@ -71,7 +60,7 @@ export default function Select() {
   };
 
   const customList = (title, items) => (
-    <Card className="w-full">
+    <Card className="w-full ">
       <CardHeader
         sx={{ px: 2, py: 1 }}
         avatar={
@@ -101,7 +90,7 @@ export default function Select() {
         dense
         component="div"
         role="list"
-        className=" max-h-150 overflow-y-scroll "
+        className=" w-60 "
       >
         {items.map((value) => {
           const labelId = `transfer-list-all-item-${value}-label`;
@@ -135,6 +124,7 @@ export default function Select() {
       container
       spacing={2}
       sx={{ justifyContent: "center", alignItems: "center" }}
+
     >
       <Grid>{customList("Choices", left)}</Grid>
     </Grid>
