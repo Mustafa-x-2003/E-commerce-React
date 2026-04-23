@@ -20,7 +20,6 @@ function AllProductsPage() {
               `https://dummyjson.com/products/category/${c}`,
             );
             const data = await res.json();
-            console.log(categorys, "all");
 
             return data.products;
           }),
@@ -48,7 +47,7 @@ function AllProductsPage() {
         </span>
         <div className="bg-(--white-color) relative ">
           <div
-            className={`${isShowFilter ? "left-0" : "-left-75 lg:-left-130 xl:-left-100 "} z-50  transition-all duration-500   absolute top-4    w-fit  `}
+            className={`${isShowFilter ? "left-0 " : "-left-75 lg:-left-130 xl:-left-130 "} z-50  transition-all duration-500   absolute top-4    w-fit  `}
           >
             <Select />
           </div>
@@ -63,26 +62,14 @@ function AllProductsPage() {
             <p>load..</p>
           ) : search === "" ? (
             products.map((p) => {
-              return (
-                <CardProduct
-                  name={p.title}
-                  price={p.price}
-                  image={p.images?.[0]}
-                  id={p.id}
-                />
-              );
+
+              
+          return <CardProduct  product={p} />;
             })
           ) : (
             products.map((p) => {
               if (p.title.startsWith(search)) {
-                return (
-                  <CardProduct
-                    name={p.title}
-                    price={p.price}
-                    image={p.images?.[0]}
-                    id={p.id}
-                  />
-                );
+                return <CardProduct  product={p} />;
               }
             })
           )}

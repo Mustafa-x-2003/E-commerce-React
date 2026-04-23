@@ -14,7 +14,6 @@ import MyContext from "./contexts/MyContext";
 // ================
 const Links = [
   { name: "Home", path: "/" },
-  { name: "Categories", path: "/Categories" },
   { name: "All Products", path: "/AllProductsPage" },
   { name: "Blog", path: "/Blog" },
 ];

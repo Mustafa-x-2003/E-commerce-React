@@ -52,6 +52,8 @@ export function MyProviderContext({ children }) {
   });
 
   function handelAddItemsToCart(value) {
+
+    
     setProductsCart((prev) => {
       const ele = prev.find((e) => {
         return e.id === value.id;
@@ -125,6 +127,7 @@ export function MyProviderContext({ children }) {
         productsFavorite,
         setProductsFavorite,
         handelAddItemsToFavorite,
+        allCategorys
       }}
     >
       {children}

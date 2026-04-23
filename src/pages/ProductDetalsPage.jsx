@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 // icons
 import { MdStar } from "react-icons/md";
@@ -8,8 +8,10 @@ import { FaShare } from "react-icons/fa";
 import ProductsContainer from "../components/ProductsContainer";
 import CardProduct from "../components/sliderProduct/CardProduct";
 import SliderProduct from "../components/sliderProduct/SliderProduct";
+import MyContext from "../components/contexts/MyContext";
 
 function ProductDetals() {
+  const { handelAddItemsToCart, handelAddItemsToFavorite } =useContext(MyContext);
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [products, setProducts] = useState({});
@@ -100,11 +102,20 @@ function ProductDetals() {
             </p>
             <p className="py-3">{product.description}</p>
             <span className="py-3">{product.returnPolicy}</span>
-            <button className="my-3 bg-(--main-color) hover:bg-transparent hover:text-(--main-color) cursor-pointer border-2! hover:border-(--main-color)! transition-all duration-300 flex items-center gap-4 text-(--white-color) max-w-fit py-2 px-4 rounded-sm ">
+            <button 
+            onClick={()=>{
+              handelAddItemsToCart(product)
+            }}
+            className="my-3 bg-(--main-color) hover:bg-transparent hover:text-(--main-color) cursor-pointer border-2! hover:border-(--main-color)! transition-all duration-300 flex items-center gap-4 text-(--white-color) max-w-fit py-2 px-4 rounded-sm ">
               Add to cart <FaCartArrowDown />
             </button>
             <div className="flexb py-3 gap-5 w-fit">
-              <span className="flex items-center cursor-pointer hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 justify-center w-12 h-12 rounded-full bg-(--bg-color)">
+              <span 
+              onClick={()=>{
+                handelAddItemsToFavorite(product)
+                
+              }}
+              className="flex items-center cursor-pointer hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 justify-center w-12 h-12 rounded-full bg-(--bg-color)">
                 <FaRegHeart />
               </span>
               <span className="flex items-center cursor-pointer hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 justify-center w-12 h-12 rounded-full bg-(--bg-color)">

@@ -55,10 +55,7 @@ function Favorite() {
         {productsFavorite.map((p) => {
           return (
             <CardProduct
-              name={p.title}
-              price={p.price}
-              image={p.image}
-              id={p.id}
+              product={p}
               handelDeleteItems={handelDeleteItems}
             />
           );

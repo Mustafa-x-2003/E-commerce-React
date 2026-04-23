@@ -10,7 +10,8 @@ import Footer from "./components/Footer";
 import ProductDetals from "./pages/ProductDetalsPage";
 import { MyProviderContext } from "./components/contexts/MyContext";
 import Favorite from "./pages/Favorite";
-
+import Checkout from "./pages/Checkout";
+// localStorage.clear()
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
             <Route element={<ProductDetals />} path={`/ProductDetals/:id`} />
             <Route element={<CartPage />} path={"/CartPage"} />
             <Route element={<Favorite />} path={"/Favorite"} />
+            <Route element={<Checkout />} path={"/Checkout"} />
           </Routes>
         </div>
 

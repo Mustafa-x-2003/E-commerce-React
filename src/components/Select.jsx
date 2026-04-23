@@ -27,13 +27,13 @@ function union(a, b) {
 }
 
 export default function Select() {
-  const { categorys, setCategorys, isDefault } = useContext(MyContext);
+  const { categorys, setCategorys,allCategorys, isDefault } = useContext(MyContext);
   const [checked, setChecked] = React.useState(isDefault ? [] : categorys);
-  const [left, setLeft] = useState(categorys);
+  const [left, setLeft] = useState(allCategorys);
 
 
   useEffect(() => {
-    setCategorys(checked);
+    setCategorys(checked );
   }, [checked]);
 
   const handleToggle = (value) => () => {

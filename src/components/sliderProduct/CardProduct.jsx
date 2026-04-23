@@ -10,9 +10,11 @@ import { Link } from "react-router";
 // context
 import MyContext from "../contexts/MyContext";
 
-function Card({ name, price, image, id, handelDeleteItems }) {
+function Card({ product, handelDeleteItems }) {
   const { handelAddItemsToCart, handelAddItemsToFavorite } =
     useContext(MyContext);
+  if (!product) return;
+
 
   return (
     <div className=" text-center text-lg  border border-(--border-color) hover:border-(--main-color) hover:shadow-[0_0_10px_10px_rgba(0,0,0,0.1)] rounded-lg transition-all duration-300 flex flex-col items-start  relative group ">
@@ -21,7 +23,7 @@ function Card({ name, price, image, id, handelDeleteItems }) {
         <div className="flex text-(--main-color) flex-col items-center justify-between gap-3 translate-x-16  group-hover:translate-x-0 opacity-100 group-hover:opacity-100 transition-all duration-300">
           <span
             onClick={() => {
-              handelAddItemsToCart({ name, price, image, id });
+              handelAddItemsToCart(product);
             }}
             className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
           >
@@ -29,19 +31,19 @@ function Card({ name, price, image, id, handelDeleteItems }) {
           </span>
           <span
             onClick={() => {
-              handelAddItemsToFavorite({ name, price, image, id });
+              handelAddItemsToFavorite(product);
             }}
             className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
           >
             <FaRegHeart />
           </span>
           {handelDeleteItems ? (
-            <span 
-            onClick={()=>{
-              handelDeleteItems(id)
-            }}
-            
-            className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)">
+            <span
+              onClick={() => {
+                handelDeleteItems(product.id);
+              }}
+              className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
+            >
               <RiDeleteBin6Line />
             </span>
           ) : (
@@ -53,13 +55,13 @@ function Card({ name, price, image, id, handelDeleteItems }) {
       </div>
       {/* === Icons === */}
 
-      <Link to={`/ProductDetals/${id}`}>
+      <Link to={`/ProductDetals/${product.id}`}>
         <div className="flexc pt-6 pb-7 px-9  ">
-          <img src={image} alt="" />
+          <img src={product.images?.[0]} alt="" />
         </div>
 
         <div className="px-3 py-5">
-          <h4 className="truncate w-55 text-start">{name}</h4>
+          <h4 className="truncate w-55 text-start">{product.title}</h4>
           <span className="flex text-yellow-400! py-3">
             <MdStar />
             <MdStar />
@@ -67,7 +69,7 @@ function Card({ name, price, image, id, handelDeleteItems }) {
             <MdStar />
             <MdStar />
           </span>
-          <span className="font-bold text-xl flex text-start0">${price}</span>
+          <span className="font-bold text-xl flex text-start0">${product.price}</span>
         </div>
       </Link>
     </div>

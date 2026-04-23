@@ -13,11 +13,13 @@ function Item({ product, handelDeleteItems }) {
   return (
     <div className="flex flex-col lg:flex-row  py-10 border-b border-(--border-color) last:border-0">
       <div className=" lg:w-[10%] border border-(--border-color) rounded-xl">
-        <img src={product.image} alt="" />
+        <img src={product.images[0]} alt="" />
       </div>
       <div className="w-full px-4 flex flex-col justify-between ">
         <h2 className=" py-8  lg:p-0 flexb w-full font-bold md:text-xl">
-          <span className="w-60 truncate text-start lg:w-full ">{product.name}</span>
+          <span className="w-60 truncate text-start lg:w-full ">
+            {product.title}
+          </span>
           <span className="text-(--main-color)!">
             ${Math.floor(product.price) * product.count}
           </span>
@@ -126,15 +128,19 @@ function CartPage() {
                 <span>Total Price</span>
               </p>
               <span className="text-xl  font-bold text-(--color-heading)">
-                ${suptotal - Estimated}33333
+                ${suptotal - Estimated}
               </span>
             </div>
 
-            <Link className="flexc font-bold py-4 gap-2 border-2 border-(--main-color) bg-(--main-color) text-(--white-color) rounded-lg  hover:bg-transparent hover:text-(--main-color) transition-all duration-300">
-              <span className="lg:text-sm">Proceed to Checkout</span>
+            <Link 
+            to={'/Checkout'}
+            className="flexc font-bold py-4 gap-2 border-2 border-(--main-color) bg-(--main-color) text-(--white-color) rounded-lg  hover:bg-transparent hover:text-(--main-color) transition-all duration-300">
+              <span className="xl:text-lg">Proceed to Checkout</span>
               <IoArrowForwardOutline />
             </Link>
-            <Link className="lg:text-sm flexc font-bold py-4 gap-2 border-2 border-(--main-color) bg-transparent  rounded-lg  text-(--main-color)">
+            <Link 
+            to={'/AllProductsPage'}
+            className="xl:text-lg flexc font-bold py-4 gap-2 border-2 border-(--main-color) bg-transparent  rounded-lg  text-(--main-color)">
               Continue Shopping
             </Link>
           </div>
