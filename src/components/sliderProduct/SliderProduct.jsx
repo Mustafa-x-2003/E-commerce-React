@@ -54,10 +54,7 @@ function SliderProduct({ title, products }) {
               <Link to={"/ProductDetals"}>
                 <SwiperSlide className="my-4">
                   <CardProduct
-                    name={product.title}
-                    price={product.price}
-                    image={product.images[0]}
-                    id={product.id}
+                    product={product}
                   />
                 </SwiperSlide>
               </Link>

@@ -97,9 +97,7 @@ function Header() {
       {/* moile */}
       <div className="fixed  bottom-0 z-1000 left-1/2 -translate-x-1/2 md:hidden shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] rounded-lg">
         <div className="   flexb  bg-(--white-color) w-[390px] sm:w-[580px] gap-12 text-3xl py-3 px-10 rounded-lg ">
-          <span className="hover:text-(--main-color) ">
-            <IoMenuSharp />
-          </span>
+          
 
           <div className="relative">
             <Link to={"/CartPage"}>
@@ -117,9 +115,12 @@ function Header() {
               </span>
             </div>
           </Link>
+          <Link to={"/"}>
           <span className="hover:text-(--main-color)">
             <IoHomeOutline />
           </span>
+          </Link>
+          
         </div>
       </div>
     </div>
