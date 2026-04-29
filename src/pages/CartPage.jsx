@@ -12,11 +12,11 @@ function Item({ product, handelDeleteItems }) {
 
   return (
     <div className="flex flex-col lg:flex-row  py-10 border-b border-(--border-color) last:border-0">
-      <div className=" lg:w-[10%] border border-(--border-color) rounded-xl">
+      <div className=" lg:w-[10%] p-2 border border-(--border-color) rounded-xl">
         <img src={product.images[0]} alt="" />
       </div>
       <div className="w-full px-4 flex flex-col justify-between ">
-        <h2 className=" py-8  lg:p-0 flexb w-full font-bold md:text-xl">
+        <h2 className=" py-8  lg:p-0 flexb w-full  md:text-xl">
           <span className="w-60 truncate text-start lg:w-full ">
             {product.title}
           </span>
@@ -92,7 +92,7 @@ function CartPage() {
 
       <div className="lg:h-170 gap-4 flex flex-col lg:flex-row md:justify-between ">
         <div className="w-full  lg:[60%] xl:w-[70%] shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] rounded-2xl px-4 ">
-          <div className=" md:grid grid-cols-2 sm: gap-4 lg:block md:overflow-y-scroll h-full ">
+          <div className=" sm:grid grid-cols-2 sm: gap-4 lg:block md:overflow-y-scroll h-full ">
             {productsCart.map((p) => {
               return <Item product={p} handelDeleteItems={handelDeleteItems} />;
             })}
@@ -132,15 +132,17 @@ function CartPage() {
               </span>
             </div>
 
-            <Link 
-            to={'/Checkout'}
-            className="flexc font-bold py-4 gap-2 border-2 border-(--main-color) bg-(--main-color) text-(--white-color) rounded-lg  hover:bg-transparent hover:text-(--main-color) transition-all duration-300">
+            <Link
+              to={"/Checkout"}
+              className="flexc font-bold py-4 gap-2 border-2 border-(--main-color) bg-(--main-color) text-(--white-color) rounded-lg  hover:bg-transparent hover:text-(--main-color) transition-all duration-300"
+            >
               <span className="xl:text-lg">Proceed to Checkout</span>
               <IoArrowForwardOutline />
             </Link>
-            <Link 
-            to={'/AllProductsPage'}
-            className="xl:text-lg flexc font-bold py-4 gap-2 border-2 border-(--main-color) bg-transparent  rounded-lg  text-(--main-color)">
+            <Link
+              to={"/AllProductsPage"}
+              className="xl:text-lg flexc font-bold py-4 gap-2 border-2 border-(--main-color) bg-transparent  rounded-lg  text-(--main-color)"
+            >
               Continue Shopping
             </Link>
           </div>

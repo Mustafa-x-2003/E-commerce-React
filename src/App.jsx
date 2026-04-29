@@ -18,7 +18,7 @@ function App() {
       <MyProviderContext>
         {/* === Header === */}
         <Header />
-        <div className="pt-45  ">
+        <div className="pt-40  ">
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<AllProductsPage />} path="/AllProductsPage" />

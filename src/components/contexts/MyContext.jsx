@@ -1,10 +1,30 @@
 import { createContext, useEffect, useState } from "react";
 const allCategorys = [
+  "beauty",
+  "fragrances",
+  "furniture",
+  "groceries",
+  "home-decoration",
+  "kitchen-accessories",
   "laptops",
+  "mens-shirts",
+  "mens-shoes",
+  "mens-watches",
+  "mobile-accessories",
+  "motorcycle",
+  "skin-care",
   "smartphones",
+  "sports-accessories",
+  "sunglasses",
   "tablets",
-  "mobile-accessories"
-]
+  "tops",
+  "vehicle",
+  "womens-bags",
+  "womens-dresses",
+  "womens-jewellery",
+  "womens-shoes",
+  "womens-watches",
+];
 const MyContext = createContext();
 export function MyProviderContext({ children }) {
   // === Categorys ===
@@ -22,6 +42,35 @@ export function MyProviderContext({ children }) {
     localStorage.setItem("category", JSON.stringify(categorys));
   }, [categorys]);
 
+  // All Products
+  const [products, setProducts] = useState();
+  const [loadproducts, setLoadProducts] = useState(true);
+  useEffect(() => {
+    const fetchProducts = async function () {
+      try {
+        const results = await Promise.all(
+          allCategorys.map(async (c) => {
+            const res = await fetch(
+              `https://dummyjson.com/products/category/${c}`,
+            );
+            const data = await res.json();
+
+            return {
+              [c]: data.products.map((p) => {
+                return { ...p, discount: Math.floor(Math.random() * 30) + 10 };
+              }),
+            };
+          }),
+        );
+        const allProducts = Object.assign({}, ...results);
+        setProducts(allProducts);
+        setLoadProducts(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchProducts();
+  }, []);
   const isDefault =
     categorys.length === allCategorys.length &&
     categorys.every((c) => allCategorys.includes(c));
@@ -52,8 +101,6 @@ export function MyProviderContext({ children }) {
   });
 
   function handelAddItemsToCart(value) {
-
-    
     setProductsCart((prev) => {
       const ele = prev.find((e) => {
         return e.id === value.id;
@@ -114,6 +161,8 @@ export function MyProviderContext({ children }) {
   return (
     <MyContext.Provider
       value={{
+        products,
+        loadproducts,
         categorys,
         setCategorys,
         search,
@@ -127,7 +176,7 @@ export function MyProviderContext({ children }) {
         productsFavorite,
         setProductsFavorite,
         handelAddItemsToFavorite,
-        allCategorys
+        allCategorys,
       }}
     >
       {children}

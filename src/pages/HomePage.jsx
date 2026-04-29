@@ -1,22 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Header from "../components/Header";
 import HomeSlider from "../components/hero/HomeSlider";
 import SliderProduct from "../components/sliderProduct/SliderProduct";
 
-
 // categorys
-const categorys = [
-  "laptops",
-  "smartphones",
-  "tablets",
-  "mobile-accessories"
-]
-import image1 from "../images/blog-1.jpg";
-import image2 from "../images/blog-2.jpg";
-import image3 from "../images/blog-3.jpg";
+
+import image1 from "../img/blog-1.jpg";
+import image2 from "../img/blog-2.jpg";
+import image3 from "../img/blog-3.jpg";
 import SliderBlogs from "../components/sliderBlogs/SliderBlogs";
 import Footer from "../components/Footer";
 import Services from "../components/Services";
+import MyContext from "../components/contexts/MyContext";
+
+// import bannars imag
+import bannaer1 from "../img/banner/banner-4.jpg";
+import bannaer2 from "../img/banner/banner-5.jpg";
+import { Link } from "react-router";
+const bannars = [
+  { id: 0, image: bannaer1 },
+  { id: 1, image: bannaer2 },
+];
 const blogs = [
   {
     id: 1,
@@ -44,58 +48,71 @@ const blogs = [
   },
 ];
 function Home() {
-  const [products, setProducts] = useState();
-  const [loadproducts, setLoadProducts] = useState(true);
-
-  useEffect(() => {
-    const fetchProducts = async function () {
-      try {
-        const results = await Promise.all(
-          categorys.map(async (c) => {
-            const res = await fetch(
-              `https://dummyjson.com/products/category/${c}`,
-            );
-            const data = await res.json();
-            return {
-              [c]: data.products,
-            };
-          }),
-        );
-        const allProducts = Object.assign({}, ...results);
-        setProducts(allProducts);
-        setLoadProducts(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchProducts();
-  }, []);
+  const { products, loadproducts, allCategorys } = useContext(MyContext);
 
   return (
     <div className="">
       {/* === Home === */}
       <HomeSlider />
       {/* === FEATURED COLLECTION === */}
-      <div id="FEATUREDCOLLECTION">
-        {" "}
+      <div>
         {loadproducts ? (
-          <p>load...</p>
+          <p>Loading</p>
         ) : (
           <SliderProduct
-            title={["FEATURED COLLECTION"]}
-            description={""}
-            products={categorys.map((c) => {
+            type={"FEATUREDOLLECTION"}
+            title={"FEATURED COLLECTION"}
+            products={allCategorys.map((c) => {
               return products[c][0];
             })}
           />
         )}
       </div>
-      {/* === Services === */}
-      <Services/>
+      {/* === Discount on products === */}
+      <div>
+        {loadproducts ? (
+          <p>Loading</p>
+        ) : (
+          <SliderProduct
+            type={"DiscountOnProducts"}
+            title={"Discount on products"}
+            products={allCategorys.map((c) => {
+              return products[c][0];
+            })}
+          />
+        )}
+      </div>
+      {/* Bannar */}
+      <div className=" container flex justify-between items-center  md:py-2 lg:py-10 flex-wrap">
+        {bannars.map((b) => {
+          return (
+            <div
+              key={b.id}
+              className=" relative w-full lg:w-[49.5%]  my-[1%] lg:m-0 "
+            >
+              <Link>
+                <div className="w-full h-full glassEfect"></div>
+              </Link>
+              <img src={b.image} alt="" />
+            </div>
+          );
+        })}
+      </div>
+      {/* === All Products === */}
+      <div >
+        {loadproducts ? (
+          <p>Loading</p>
+        ) : (
+          allCategorys.map((c) => {
+            return <SliderProduct key={c} title={c} products={products[c]} />;
+          })
+        )}
+      </div>
 
+      {/* === Services === */}
+      <Services />
 
       <SliderBlogs title={"Explore our blog"} blogs={blogs} />
-   
     </div>
   );
 }

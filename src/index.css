@@ -17,9 +17,6 @@ html{
   --white-color: #fff;
   --color-heading: #253237;
   --border-color: #d6d6d6d5;
-  --ff-mr_de_haviland: "Mr De Haviland", cursive;
-
-  --fs-1: 6rem;
 }
 img {
   width: 100%;
@@ -52,12 +49,20 @@ textarea {
 a {
   text-decoration: none;
 }
-.heddin {
-  transition: all 0.3s;
-  left: -400px;
+.heddinSidBar {
+  transition: all 0.5s ease-in-out;
+  left: -620px;
 }
-.show {
-  transition: all 0.3s;
+.showSidBar {
+  transition: all 0.5s ease-in-out;
+  left: 0;
+}
+.heddinMenuCart {
+  transition: all 0.5s ease-in-out;
+  left: -620px;
+}
+.showMenuCart {
+  transition: all 0.5s ease-in-out;
   left: 0;
 }
 .heddinFilter {
@@ -79,3 +84,37 @@ a {
   align-items: center;
 }
 
+.glassEfect::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 50%,
+    rgba(255, 255, 255, 0.1) 60%,
+    rgba(255, 255, 255, 0.5) 70%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  background-position: 200% 0;
+  transition: 0.8s;
+}
+.glassEfect:hover::after {
+  background-position: -20% 0;
+}
+.btnSecondary {
+  color: var(--main-color);
+  background: transparent;
+  border: 2px solid var(--main-color);
+  border-radius: 8px;
+  transition: all 0.3s;
+  padding: 8px 16px;
+  text-align: center;
+}
+.btnSecondary:hover {
+  background: var(--main-color);
+  color: var(--white-color);
+}

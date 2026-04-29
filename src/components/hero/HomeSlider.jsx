@@ -2,34 +2,88 @@ import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router";
 // ===========
-import heroSm from "../../images/hero-sm.png";
-import hero from "../../images/hero-md.png";
+import image1 from "../../img/features1.png";
+import image2 from "../../img/features2.png";
+import image3 from "../../img/features3.png";
+import image4 from "../../img/features4.png";
+import image5 from "../../img/features5.png";
+
+import bannar3 from "../../img/banner-3.png";
+import bannar4 from "../../img/banner-4.png";
+import bannar5 from "../../img/banner-5.png";
+import SliderProduct from "../sliderProduct/SliderProduct";
+import Slider from "../hero/Slider";
+
+const features = [
+  {
+    id: 0,
+    image: image1,
+    title: "Fast Performance",
+    desc: "Lightning-fast browsing",
+  },
+  {
+    id: 1,
+    image: image2,
+    title: "Easy Returns",
+    desc: "Easy returns, no hassle experience",
+  },
+  { id: 2, image: image3, title: "24/7 Support", desc: "24/7 support anytime" },
+  {
+    id: 3,
+    image: image4,
+    title: "Secure Payment",
+    desc: "Secure payment methods",
+  },
+  {
+    id: 4,
+    image: image5,
+    title: "Special Discounts",
+    desc: "Exclusive deals and discounts",
+  },
+];
+const bannars = [
+  { id: 1, image: bannar3 },
+  { id: 2, image: bannar4 },
+  { id: 3, image: bannar5 },
+];
 
 function HomeSlider() {
   return (
     <section className="container   ">
-      <div className="relative  text-center text-lg flex items-center justify-center ">
-        <img src={heroSm} alt="" className=" md:hidden block" />
-        <img src={hero} alt="" className=" hidden md:block " />
-
-        <div className=" p-3 rounded-lg absolute -bottom-20 sm:bottom-0 left-1/2 translate-x-[-50%] md:translate-0 w-[370px] sm:w-[500px] md:w-auto   bg-(--white-color)/75 md:bg-transparent md:top-0  md:left-0 md:h-full  content-center  text-start">
-          <h5 className="text-(--main-color)! text-[14px] md:text-sm lg:text-lg ">UPGRADE YOUR WORLD</h5>
-          <h1 className=" sm:text-3xl md:text-3xl lg:text-4xl font-bold py-1 sm:py-2 md:py-5 lg:leading-10 xl:leading-15 xl:text-5xl">
-            Discover the Latest <br /> <span className="text-(--main-color)">Tech</span> That Inspires
-          </h1>
-          <p className="  sm:block w-90 sm:w-100 lg:w-100">
-            Explore top quality electronics, smart devices, and accessories 
-            all in one place
-          </p>
-          <div>
-            <Link>
-            <span className="relative  flexb sm:my-3 md:my-5 py-1 sm:py-2 px-4 hover:pr-8 bg-(--main-color) rounded-lg text-(--white-color) w-fit gap-1 transition-all duration-300 group hover:text-(--main-color) border-2 border-(--main-color) hover:bg-transparent">
-              Shop new
-              <FaArrowRight className="transition-all duration-300 opacity-0 group-hover:opacity-100 absolute right-2 top-1/2 translate-y-[-50%]"/>
-            </span>
-            </Link>
-          </div>
+      <div className="mt-5">
+        <Slider />
+        <div className="flex px-4 lg:px-2 md:py-8 items-center mt-8 flex-wrap gap-2 shadow-[0_0_10px_5px_rgba(0,0,0,0.1)]">
+          {features.map((f) => {
+            return (
+              <div
+                key={f.id}
+                className="flex items-center grow gap-2 bg-(--white-color) py-4"
+              >
+                <img src={f.image} alt="" className="w-10!  md:w-15!" />
+                <div>
+                  <h2 className="font-bold pb-1">{f.title}</h2>
+                  <p className=" text-[14px] ">{f.desc}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
+      </div>
+      {/* Bannar */}
+      <div className="flexb mt-8 flex-wrap">
+        {bannars.map((b) => {
+          return (
+            <div
+              key={b.id}
+              className=" relative w-85.80 sm:w-[47%]  xl:w-[32%] m-1 flex"
+            >
+              <Link>
+                <div className="w-full h-full glassEfect"></div>
+              </Link>
+              <img src={b.image} alt="" />
+            </div>
+          );
+        })}
       </div>
     </section>
   );

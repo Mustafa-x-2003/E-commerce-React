@@ -8,27 +8,55 @@ import { BiShoppingBag } from "react-icons/bi";
 import { IoMenuSharp } from "react-icons/io5";
 import { IoSearch } from "react-icons/io5";
 import { IoHomeOutline } from "react-icons/io5";
+import { AiTwotoneAppstore } from "react-icons/ai";
 // === import components ===
 import Search from "./Search";
 import MyContext from "./contexts/MyContext";
+
+import SideBar from "./hero/SideBar";
 // ================
-const Links = [
+const links = [
   { name: "Home", path: "/" },
+  { name: "Categories", path: "/" },
   { name: "All Products", path: "/AllProductsPage" },
-  { name: "Blog", path: "/Blog" },
+  { name: "About Use", path: "/AboutUse" },
+  { name: "Contact", path: "/Contact" },
 ];
 function Item({ name, path }) {
+  const { allCategorys } = useContext(MyContext);
   return (
-    <Link to={path}>
-      <li className="">{name}</li>
-    </Link>
+    <>
+      {name === "Categories" ? (
+        <li className="group relative">
+          {name}
+          {/* divide-x divide-(--border-color) */}
+          <ul
+            className="w-150 grid grid-cols-3  text-center bg-(--white-color) transition-all duration-500 scale-0 opacity-0 group-hover:scale-100 group-hover:opacity-100 absolute shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] p-2 rounded-xl left-[50%] translate-x-[-50%] top-6"
+          >
+            {allCategorys.map((c) => {
+              return (
+                <li key={c} className="py-2 text-(--p-color) hover:text-(--main-color)!">
+                  <a href={`#${c}`}>{c.replace(/-/g, " ")}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </li>
+      ) : (
+        <Link to={path}>
+          <li className="">{name}</li>
+        </Link>
+      )}
+    </>
   );
 }
 function Header() {
+  const [isShowSideBar, setIsShowSideBar] = React.useState(false);
   const { productsCart, productsFavorite } = useContext(MyContext);
 
   return (
     <div className="fixed  w-full  left-0 bg-(--white-color) shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] z-1000 ">
+      <SideBar show={isShowSideBar} handel={setIsShowSideBar} links={links} />
       {/* Top Headr */}
       <div className=" flexb container py-2">
         <p>Free Shipping This Week Order Over - $55</p>
@@ -45,6 +73,7 @@ function Header() {
           </select>
         </span>
       </div>
+
       {/* Center Headr */}
       <div className="border-t border-(--border-color)">
         <div className="container   flexb flex-wrap  py-4 overflow-hidden ">
@@ -88,7 +117,7 @@ function Header() {
       {/* Bottom Header */}
       <div className=" border-t border-(--border-color) hidden md:block  ">
         <ul className="flexb py-2 gap-10  font-bold  m-auto w-fit">
-          {Links.map((l) => {
+          {links.map((l) => {
             return <Item name={l.name} path={l.path} />;
           })}
         </ul>
@@ -96,8 +125,14 @@ function Header() {
 
       {/* moile */}
       <div className="fixed  bottom-0 z-1000 left-1/2 -translate-x-1/2 md:hidden shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] rounded-lg">
-        <div className="   flexb  bg-(--white-color) w-[390px] sm:w-[580px] gap-12 text-3xl py-3 px-10 rounded-lg ">
-          
+        <div className="   flexc sm:flexb  bg-(--white-color) w-fit sm:w-fit gap-13 sm:gap-18 text-3xl py-3 px-5 rounded-lg ">
+          <div
+            onClick={() => {
+              setIsShowSideBar(true);
+            }}
+          >
+            <IoMenuSharp />
+          </div>
 
           <div className="relative">
             <Link to={"/CartPage"}>
@@ -107,6 +142,13 @@ function Header() {
               </span>
             </Link>
           </div>
+
+          <Link to={"/"}>
+            <span className="hover:text-(--main-color)">
+              <IoHomeOutline />
+            </span>
+          </Link>
+
           <Link to={"/Favorite"}>
             <div className="relative">
               <IoHeartOutline className="cursor-pointer hover:text-(--main-color) transition-all duration-300" />
@@ -115,12 +157,6 @@ function Header() {
               </span>
             </div>
           </Link>
-          <Link to={"/"}>
-          <span className="hover:text-(--main-color)">
-            <IoHomeOutline />
-          </span>
-          </Link>
-          
         </div>
       </div>
     </div>
