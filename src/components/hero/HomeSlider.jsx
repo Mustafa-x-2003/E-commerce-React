@@ -70,7 +70,7 @@ function HomeSlider() {
       </div>
       {/* Bannar */}
 
-      <div className="flex  lg:px-2 items-center mt-3 md:mt-20 flex-wrap gap-2 ">
+      <div className="flex  lg:px-2 items-center mt-3 md:mt-10 flex-wrap gap-2 ">
         {features.map((f) => {
           return (
             <div

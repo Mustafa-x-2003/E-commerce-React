@@ -37,7 +37,9 @@ export default function SideBar({ show, links = [], handel }) {
         <Stack spacing={2}>
           {links.map((l) => {
             return (
-              <Item key={l.name} className="bg-amber-900 ">
+              <Item onClick={() => {
+            handel(false);
+          }} key={l.name} className="bg-amber-900 ">
                 <Link className="text-xl text-(--main-color )" to={l.path}>{l.name}</Link>
               </Item>
             );
