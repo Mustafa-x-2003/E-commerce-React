@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 import HomeSlider from "../components/hero/HomeSlider";
 import SliderProduct from "../components/sliderProduct/SliderProduct";
 

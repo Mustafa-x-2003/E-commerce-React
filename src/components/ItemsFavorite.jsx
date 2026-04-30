@@ -58,4 +58,4 @@ function ItemsFavorite({ product, handelDeleteItems }) {
   );
 }
 
-export default ItemCartAndFav;
+export default ItemsFavorite;

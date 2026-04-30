@@ -4,10 +4,10 @@ import Categorys from "./contexts/MyContext";
 function Search({ width,icon, placeholder }) {
   const { search, setSearch } = useContext(Categorys);
   return (
-    <div className={`flexb ${width} py-2 px-4 rounded-xl border border-(--border-color) focus-within:border-(--main-color)! w-full transition duration-300`}>
+    <div className={`flexb ${width} py-4 px-4 rounded-xl border border-(--border-color) focus-within:border-(--main-color)! w-full transition duration-300`}>
       <input
         onChange={(e) => {
-          setSearch(e.target.value.toUpperCase().trim());
+          setSearch(e.target.value.toLowerCase().trim());
         }}
         value={search}
         type="text"

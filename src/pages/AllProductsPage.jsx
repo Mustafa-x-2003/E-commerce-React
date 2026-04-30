@@ -1,8 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import SelectCategory from "../components/SelectCategory";
+import Search from "../components/Search";
 import CardProduct from "../components/sliderProduct/CardProduct";
 import MyContext from "../components/contexts/MyContext";
 import ProductsContainer from "../components/ProductsContainer";
+// Import Icons
+import { IoSearch } from "react-icons/io5";
 import { IoMenuSharp } from "react-icons/io5";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
@@ -39,7 +42,12 @@ function AllProductsPage() {
   return (
     <>
       <div className="container ">
-        <SelectCategory />
+        <div className="flexb container">
+          {/* Search */}
+          <Search placeholder={"Search Anything..."} icon={<IoSearch />} />
+          <SelectCategory />
+        </div>
+
         <div className="pt-2">
           <ProductsContainer
             gridStile={
@@ -54,7 +62,7 @@ function AllProductsPage() {
               })
             ) : (
               products.map((p) => {
-                if (p.title.startsWith(search)) {
+                if (p.title.toLowerCase().trim().startsWith(search)) {
                   return <CardProduct product={p} />;
                 }
               })

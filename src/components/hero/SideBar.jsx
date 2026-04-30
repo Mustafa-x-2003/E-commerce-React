@@ -17,35 +17,60 @@ const Item = styled(Paper)(({ theme }) => ({
   }),
 }));
 
+/*
+<div
+        className={` ${isShowSideBar?'left-0 ':' -left-full'}  transition-all duration-500 absolute z-100 w-full h-screen bg-[rgba(0,0,0,.5)]`}
+      ></div>
+*/
+
 export default function SideBar({ show, links = [], handel }) {
   return (
+
+    <>
+
     <div
-      className={`${show ? "  showSidBar  " : "  heddinSidBar  "} top-0 sm:hidden absolute z-100  px-2 py-4 w-full h-screen bg-(--white-color)`}
+      className={` ${show ? " scale-100 opacity-100" : " scale-0 opacity-0"}  transition-all duration-500 absolute z-100 w-full h-screen bg-[rgba(0,0,0,.5)]`}
+      
     >
-      <div className="flex items-start ">
-        <div className="flex-1"></div>
-        <IconButton
-          aria-label="off"
-          onClick={() => {
-            handel(false);
-          }}
-        >
-          <HighlightOffIcon className="text-3xl!" />
-        </IconButton>
-      </div>
-      <div>
-        <Stack spacing={2}>
-          {links.map((l) => {
-            return (
-              <Item onClick={() => {
-            handel(false);
-          }} key={l.name} className="bg-amber-900 ">
-                <Link className="text-xl text-(--main-color )" to={l.path}>{l.name}</Link>
-              </Item>
-            );
-          })}
-        </Stack>
-      </div>
+      
     </div>
+
+
+
+    <div
+        className={`${show ? "  showSidBar  " : "  heddinSidBar  "} top-0  absolute z-100  px-2 py-4 w-[90%] md:w-100 h-screen bg-(--white-color)  shadow-[0_0_10px_4px_rgba(0,0,0,0.2)]`}
+      >
+        <div className="flex items-start ">
+          <div className="flex-1"></div>
+          <IconButton
+            aria-label="off"
+            onClick={() => {
+              handel(false);
+            }}
+          >
+            <HighlightOffIcon className="text-3xl!" />
+          </IconButton>
+        </div>
+        <div>
+          <Stack spacing={2}>
+            {links.map((l) => {
+              return (
+                <Item
+                  onClick={() => {
+                    handel(false);
+                  }}
+                  key={l.name}
+                >
+                  <Link className="text-xl text-(--main-color )" to={l.path}>
+                    {l.name}
+                  </Link>
+                </Item>
+              );
+            })}
+          </Stack>
+        </div>
+      </div>
+    </>
+    
   );
 }

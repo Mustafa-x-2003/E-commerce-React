@@ -51,7 +51,7 @@ a {
 }
 .heddinSidBar {
   transition: all 0.5s ease-in-out;
-  left: -620px;
+  left: -100%;
 }
 .showSidBar {
   transition: all 0.5s ease-in-out;

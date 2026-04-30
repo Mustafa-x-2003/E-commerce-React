@@ -50,7 +50,7 @@ const bannars = [
 function HomeSlider() {
   return (
     <section className="container">
-      <div className="mt-2 ">
+      <div className="">
         <Slider />
         <div className="flexb mt-2  flex-wrap">
           {bannars.map((b) => {
