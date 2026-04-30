@@ -138,7 +138,7 @@ function Card({ product, handelDeleteItems, type = "" }) {
           </div>
 
           <div className="px-3 py-5">
-            <h4 className="truncate w-40 sm:w-50 md:w-40 lg:w-50 text-start">
+            <h4 className="truncate w-30 text-sm sm:text-[16px]  sm:w-40 md:w-40 xl:w-50 text-start">
               {product.title}
             </h4>
             <span className="flex text-yellow-400! py-3">
