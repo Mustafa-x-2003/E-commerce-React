@@ -50,42 +50,42 @@ const bannars = [
 function HomeSlider() {
   return (
     <section className="container">
-      <div className="mt-5">
+      <div className="mt-2 ">
         <Slider />
-        
-      </div>
-      {/* Bannar */}
-      <div className="flexb mt-8 flex-wrap">
-        {bannars.map((b) => {
-          return (
-            <div
-              key={b.id}
-              className=" relative w-85.80 sm:w-[47%]  xl:w-[32%] m-1 flex"
-            >
-              <Link>
-                <div className="w-full h-full glassEfect"></div>
-              </Link>
-              <img src={b.image} alt="" />
-            </div>
-          );
-        })}
-      </div>
-      <div className="flex  lg:px-2 items-center mt-8 flex-wrap gap-2 ">
-          {features.map((f) => {
+        <div className="flexb mt-2  flex-wrap">
+          {bannars.map((b) => {
             return (
               <div
-                key={f.id}
-                className=" shadow-[0_0_10px_5px_rgba(0,0,0,0.1)] px-2 flex items-center grow gap-2 bg-(--white-color) py-4"
+                key={b.id}
+                className=" relative w-full sm:w-[49.5%]  xl:w-[33%]  flex justify-between flex-wrap gap-2"
               >
-                <img src={f.image} alt="" className="w-10!  md:w-15!" />
-                <div>
-                  <h2 className="font-bold pb-1">{f.title}</h2>
-                  <p className=" text-[14px] ">{f.desc}</p>
-                </div>
+                <Link>
+                  <div className="w-full h-full glassEfect"></div>
+                </Link>
+                <img src={b.image} alt="" />
               </div>
             );
           })}
         </div>
+      </div>
+      {/* Bannar */}
+
+      <div className="flex  lg:px-2 items-center mt-3 md:mt-20 flex-wrap gap-2 ">
+        {features.map((f) => {
+          return (
+            <div
+              key={f.id}
+              className=" shadow-[0_0_10px_5px_rgba(0,0,0,0.1)] px-2 flex items-center grow gap-2 bg-(--white-color) py-4"
+            >
+              <img src={f.image} alt="" className="w-10!  md:w-15!" />
+              <div>
+                <h2 className="font-bold pb-1">{f.title}</h2>
+                <p className=" text-[14px] ">{f.desc}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 }
