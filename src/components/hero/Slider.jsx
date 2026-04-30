@@ -8,7 +8,7 @@ import "swiper/css";
 // Images
 import image1 from "../../img/banner-1.png";
 import image2 from "../../img/banner-2.png";
-import image3 from "../../img/banner_Home3.png";
+import image3 from "../../img/banner_home3.png";
 
 const images = [image1, image2];
 export default function Slider() {
