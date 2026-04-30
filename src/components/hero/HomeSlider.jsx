@@ -52,22 +52,7 @@ function HomeSlider() {
     <section className="container">
       <div className="mt-5">
         <Slider />
-        <div className="flex px-4 lg:px-2 md:py-8 items-center mt-8 flex-wrap gap-2 shadow-[0_0_10px_5px_rgba(0,0,0,0.1)]">
-          {features.map((f) => {
-            return (
-              <div
-                key={f.id}
-                className="flex items-center grow gap-2 bg-(--white-color) py-4"
-              >
-                <img src={f.image} alt="" className="w-10!  md:w-15!" />
-                <div>
-                  <h2 className="font-bold pb-1">{f.title}</h2>
-                  <p className=" text-[14px] ">{f.desc}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        
       </div>
       {/* Bannar */}
       <div className="flexb mt-8 flex-wrap">
@@ -85,6 +70,22 @@ function HomeSlider() {
           );
         })}
       </div>
+      <div className="flex  lg:px-2 items-center mt-8 flex-wrap gap-2 ">
+          {features.map((f) => {
+            return (
+              <div
+                key={f.id}
+                className=" shadow-[0_0_10px_5px_rgba(0,0,0,0.1)] px-2 flex items-center grow gap-2 bg-(--white-color) py-4"
+              >
+                <img src={f.image} alt="" className="w-10!  md:w-15!" />
+                <div>
+                  <h2 className="font-bold pb-1">{f.title}</h2>
+                  <p className=" text-[14px] ">{f.desc}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
     </section>
   );
 }
