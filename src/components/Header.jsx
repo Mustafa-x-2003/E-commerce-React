@@ -55,7 +55,7 @@ function Header() {
   const { productsCart, productsFavorite } = useContext(MyContext);
 
   return (
-    <div className="fixed  w-full  left-0 bg-(--white-color) shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] z-1000 ">
+    <div className="fixed  w-full  left-0 top-0 bg-(--white-color) shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] z-1000 ">
       <SideBar show={isShowSideBar} handel={setIsShowSideBar} links={links} />
       {/* Top Headr */}
       <div className=" flexb container py-2">

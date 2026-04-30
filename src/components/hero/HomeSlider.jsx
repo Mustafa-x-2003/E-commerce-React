@@ -49,7 +49,7 @@ const bannars = [
 
 function HomeSlider() {
   return (
-    <section className="container   ">
+    <section className="container">
       <div className="mt-5">
         <Slider />
         <div className="flex px-4 lg:px-2 md:py-8 items-center mt-8 flex-wrap gap-2 shadow-[0_0_10px_5px_rgba(0,0,0,0.1)]">
