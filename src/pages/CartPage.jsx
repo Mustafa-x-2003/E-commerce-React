@@ -12,20 +12,31 @@ function Item({ product, handelDeleteItems }) {
 
   return (
     <div className="flex flex-col lg:flex-row  py-10 border-b border-(--border-color) last:border-0">
-      <div className=" lg:w-[10%] p-2 border border-(--border-color) rounded-xl">
+      <div className=" lg:w-[20%] p-2 border border-(--border-color) rounded-xl">
         <img src={product.images[0]} alt="" />
       </div>
+
       <div className="w-full px-4 flex flex-col justify-between ">
-        <h2 className=" py-8  lg:p-0 flexb w-full  md:text-xl">
-          <span className="w-60 truncate text-start lg:w-full ">
+        {/* title */}
+        <h2 className=" py-4  lg:p-0 flexb w-full  md:text-lg">
+          <span className="w-60  truncate text-start lg:w-full ">
             {product.title}
           </span>
-          <span className="text-(--main-color)!">
+
+          <span className=" hidden lg:block text-(--main-color)! text-xl">
             ${Math.floor(product.price) * product.count}
           </span>
         </h2>
-        <div className=" flexb ">
-          <span className="flexb w-fit border rounded-lg border-(--border-color)">
+
+        {/* price mini */}
+        <div className=" flex justify-between items-center lg:hidden ">
+          <span className=" text-(--main-color)! text-xl">
+            ${Math.floor(product.price) * product.count}
+          </span>
+        </div>
+        {/* remove */}
+        <div className=" flexb pt-4">
+          <span className="flex justify-between items-center w-fit border rounded-lg border-(--border-color)">
             <span
               onClick={() => {
                 handelMinusCounter(product.id);
@@ -46,6 +57,7 @@ function Item({ product, handelDeleteItems }) {
               <FaPlus />
             </span>
           </span>
+          <span></span>
           <button className="flexb gap-2 hover:text-red-700">
             <p
               onClick={() => {
@@ -70,18 +82,20 @@ function CartPage() {
     setProductsCart((prev) => prev.filter((p) => p.id !== id));
   }
 
-  const suptotal = Math.floor(
+  const suptotale = Math.floor(
     productsCart.reduce((acc, current) => {
       return acc + Math.floor(current.price) * current.count;
     }, 0),
   );
-  const Estimated = Math.floor(suptotal / 50);
+  const EstimatedTax = Math.floor(suptotale / 50);
+  const totalePrice = suptotale - EstimatedTax;
+
   return (
-    <div className="container  ">
-      <div className="pb-10 ">
-        <h2 className="text-lg md:text-2xl lg:text-3xl pt-4  flexb font-bold">
+    <div className="container ">
+      <div className="py-2 ">
+        <h2 className="text-2xl md:text-2xl lg:text-3xl   flexb font-bold">
           Your Selection
-          <p className="text-sm md:text-lg font-medium">
+          <p className="text-[16px] md:text-lg font-medium">
             <span className="text-(--main-color) ">
               {productsCart.length + " "}
             </span>
@@ -92,7 +106,7 @@ function CartPage() {
 
       <div className="lg:h-170 gap-4 flex flex-col lg:flex-row md:justify-between ">
         <div className="w-full  lg:[60%] xl:w-[70%] shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] rounded-2xl px-4 ">
-          <div className=" sm:grid grid-cols-2 sm: gap-4 lg:block md:overflow-y-scroll h-full ">
+          <div className=" grid grid-cols-2 md:grid-cols-3 gap-4 lg:block md:overflow-y-scroll h-full ">
             {productsCart.map((p) => {
               return <Item product={p} handelDeleteItems={handelDeleteItems} />;
             })}
@@ -105,7 +119,7 @@ function CartPage() {
             <p className="flexb py-2">
               Suptotal:{" "}
               <span className="text-xl font-bold text-(--color-heading) ">
-                ${suptotal}
+                ${suptotale}
               </span>
             </p>
             <p className="py-2 flexb">
@@ -117,7 +131,7 @@ function CartPage() {
             <p className="py-2 flexb">
               Estimated Tax{" "}
               <span className="text-xl font-bold text-(--color-heading)  ">
-                ${Estimated}
+                ${EstimatedTax}
               </span>
             </p>
           </div>
@@ -128,7 +142,7 @@ function CartPage() {
                 <span>Total Price</span>
               </p>
               <span className="text-xl  font-bold text-(--color-heading)">
-                ${suptotal - Estimated}
+                ${totalePrice}
               </span>
             </div>
 

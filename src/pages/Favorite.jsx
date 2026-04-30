@@ -10,22 +10,57 @@ import { Link } from "react-router";
 import ProductsContainer from "../components/ProductsContainer";
 import CardProduct from "../components/sliderProduct/CardProduct";
 
-
 function Item({ product, handelDeleteItems }) {
+  const { handelPlusCounter, handelMinusCounter } = useContext(MyContext);
+
   return (
-    <div className="flex  py-10 border-b border-(--border-color) last:border-0">
-      <div className="w-[10%] border border-(--border-color) rounded-xl">
-        <img src={product.image} alt="" />
+    <div className="flex flex-col lg:flex-row  py-10 border-b border-(--border-color) last:border-0">
+      <div className=" lg:w-[20%] p-2 border border-(--border-color) rounded-xl">
+        <img src={product.images[0]} alt="" />
       </div>
+
       <div className="w-full px-4 flex flex-col justify-between ">
-        <h2 className="  flexb w-full font-bold text-xl">
-          <span>{product.name}</span>
-          <span className="text-(--main-color)!">
+        {/* title */}
+        <h2 className=" py-4  lg:p-0 flexb w-full  md:text-lg">
+          <span className="w-60  truncate text-start lg:w-full ">
+            {product.title}
+          </span>
+
+          <span className=" hidden lg:block text-(--main-color)! text-xl">
             ${Math.floor(product.price) * product.count}
           </span>
         </h2>
-        <div className="flexb p">
-          <span className="flexb w-fit border rounded-lg border-(--border-color)"></span>
+
+        {/* price mini */}
+        <div className=" flex justify-between items-center lg:hidden ">
+          <span className=" text-(--main-color)! text-xl">
+            ${Math.floor(product.price) * product.count}
+          </span>
+        </div>
+        {/* remove */}
+        <div className=" flexb pt-4">
+          <span className="flex justify-between items-center w-fit border rounded-lg border-(--border-color)">
+            <span
+              onClick={() => {
+                handelMinusCounter(product.id);
+              }}
+              className="hover:text-(--main-color) text-(--p-color) text-2xl w-8 h-8  flexc cursor-pointer"
+            >
+              <GoDash />
+            </span>
+            <span className="w-8 flexc overflow-hidden text-(--main-color)! font-bold">
+              {product.count}{" "}
+            </span>
+            <span
+              onClick={() => {
+                handelPlusCounter(product.id);
+              }}
+              className="hover:text-(--main-color) text-(--p-color) w-8 h-8  flexc cursor-pointer"
+            >
+              <FaPlus />
+            </span>
+          </span>
+          <span></span>
           <button className="flexb gap-2 hover:text-red-700">
             <p
               onClick={() => {
@@ -50,34 +85,28 @@ function Favorite() {
   }
 
   return (
-
-      <ProductsContainer gridStile={"grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"}>
+    <div className="container">
+    <div className="py-2 ">
+        <h2 className="text-2xl md:text-2xl lg:text-3xl   flexb font-bold">
+          Your Selection
+          <p className="text-[16px] md:text-lg font-medium">
+            <span className="text-(--main-color) ">
+              {productsFavorite.length + " "}
+            </span>
+            items in your cart
+          </p>
+        </h2>
+      </div>
+     <div className=" shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] rounded-2xl px-4 ">
+      <div className=" grid grid-cols-2 md:grid-cols-3 gap-4 lg:grid-cols-2 md:overflow-y-scroll h-full ">
         {productsFavorite.map((p) => {
-          return (
-            <CardProduct
-              product={p}
-              handelDeleteItems={handelDeleteItems}
-            />
-          );
+          return <Item product={p} handelDeleteItems={handelDeleteItems} />;
         })}
-      </ProductsContainer>
-
+      </div>
+    </div>
+    </div>
+   
   );
 }
 
 export default Favorite;
-
-/*
-<div className="w-[70%] shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] rounded-2xl px-4 ">
-          <div className="  overflow-y-scroll h-full ">
-            {productsCart.map((p) => {
-              return (
-                <ItemCartAndFav
-                  product={p}
-                  handelDeleteItems={handelDeleteItems}
-                />
-              );
-            })}
-          </div>
-        </div>
-*/
