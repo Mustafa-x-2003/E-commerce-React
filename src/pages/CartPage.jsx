@@ -11,7 +11,7 @@ function Item({ product, handelDeleteItems }) {
   const { handelPlusCounter, handelMinusCounter } = useContext(MyContext);
 
   return (
-    <div className="flex flex-col lg:flex-row  py-10 border-b border-(--border-color) last:border-0">
+    <div className="flex flex-col  lg:flex-row  py-10 border-b border-(--border-color) last:border-0">
       <div className=" lg:w-[20%] p-2 border border-(--border-color) rounded-xl">
         <img src={product.images[0]} alt="" />
       </div>
@@ -28,15 +28,37 @@ function Item({ product, handelDeleteItems }) {
           </span>
         </h2>
 
-        {/* price mini */}
-        <div className=" flex justify-between items-center lg:hidden ">
-          <span className=" text-(--main-color)! text-xl">
+        {/* price mini and counter in mobile */}
+        <div className=" flex flex-col justify-between gap-2 items-center lg:hidden ">
+          <span className=" text-start w-full text-(--main-color)! text-xl">
             ${Math.floor(product.price) * product.count}
           </span>
+          <span className="flex justify-between self-start items-center w-fit border rounded-lg border-(--border-color)">
+            <span
+              onClick={() => {
+                handelMinusCounter(product.id);
+              }}
+              className="hover:text-(--main-color) text-(--p-color) text-2xl w-8 h-8  flexc cursor-pointer"
+            >
+              <GoDash />
+            </span>
+            <span className="w-8 flexc overflow-hidden text-(--main-color)! font-bold">
+              {product.count}{" "}
+            </span>
+            <span
+              onClick={() => {
+                handelPlusCounter(product.id);
+              }}
+              className="hover:text-(--main-color) text-(--p-color) w-8 h-8  flexc cursor-pointer"
+            >
+              <FaPlus />
+            </span>
+          </span>
         </div>
+
         {/* remove */}
         <div className=" flexb pt-4">
-          <span className="flex justify-between items-center w-fit border rounded-lg border-(--border-color)">
+          <span className=" hidden lg:flex justify-between items-center w-fit border rounded-lg border-(--border-color)">
             <span
               onClick={() => {
                 handelMinusCounter(product.id);
@@ -58,17 +80,17 @@ function Item({ product, handelDeleteItems }) {
             </span>
           </span>
           <span></span>
-          <button className="flexb gap-2 hover:text-red-700">
+          <span className="flexb  w-full lg:w-auto gap-2 hover:text-red-700">
             <p
               onClick={() => {
                 handelDeleteItems(product.id);
               }}
-              className=" text-xl cursor-pointer   flexc gap-2 rounded-lg hover:text-red-600! transition-all duration-300"
+              className=" text-start w-full lg:w-auto text-xl cursor-pointer  flex  items-center lg:justify-center gap-2 rounded-lg hover:text-red-600! transition-all duration-300"
             >
               <RiDeleteBin6Line />
               <span className="text-lg">remove</span>
             </p>
-          </button>
+          </span>
         </div>
       </div>
     </div>
