@@ -22,8 +22,8 @@ const links = [
   { name: "About Use", path: "/AboutUse" },
   { name: "Contact", path: "/Contact" },
 ];
+// Navigation
 function Item({ name, path }) {
-  const [show , setShow] = useState(false)
   const { allCategorys } = useContext(MyContext);
   return (
     <>
@@ -58,7 +58,6 @@ function Header() {
 
   return (
     <div className="fixed  w-full  left-0 top-0 bg-(--white-color) shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] z-500 ">
-      
       <SideBar show={isShowSideBar} handel={setIsShowSideBar} links={links} />
 
       {/* Top Headr */}
@@ -82,16 +81,17 @@ function Header() {
       <div className="border-t border-(--border-color)">
         <div className="container   flexb flex-wrap  py-4 ">
           {/* Sidbar Button */}
-          <div
-            onClick={() => {
-              setIsShowSideBar(true);
-            }}
-            className="text-2xl md:hidden"
-          >
-            <IoMenuSharp />
-          </div>
+
           {/* logo */}
-          <div className="sm:text-xl md:ext-2xl  font-bold">
+          <div className=" flexb gap-2 text-xl md:text-2xl  font-bold">
+            <span
+              onClick={() => {
+                setIsShowSideBar(true);
+              }}
+              className=" cursor-pointer  md:hidden"
+            >
+              <IoMenuSharp />
+            </span>
             <Link className="text-(--main-color)">NovaCart</Link>
           </div>
 
@@ -102,7 +102,7 @@ function Header() {
           </ul>
 
           {/* icons */}
-          <div className="flex  w-fit pr-3   justify-end gap-8 text-3xl ">
+          <div className="flex  w-fit pr-3   justify-end gap-5 md:gap-8 text-2xl ">
             <span>
               <CiUser className="cursor-pointer hover:text-(--main-color) transition-all duration-300" />
             </span>
@@ -110,20 +110,19 @@ function Header() {
             <Link to={"/Favorite"}>
               <div className="relative">
                 <IoHeartOutline className="cursor-pointer hover:text-(--main-color) transition-all duration-300" />
-                <span className="absolute text-lg w-5 h-5 rounded-full flexc text-(--white-color) bg-(--main-color)  -bottom-2 -right-3 ">
-                  {productsFavorite.length}
+                <span className="absolute text-sm w-4.5 h-4.5  rounded-full flexc text-(--white-color) bg-(--main-color)  -bottom-2 -right-3 ">
+                  {productsFavorite ? productsFavorite.length : 0}
                 </span>
               </div>
             </Link>
-
-            <div className="relative">
-              <Link to={"/CartPage"}>
+            <Link to={"/CartPage"}>
+              <div className="relative">
                 <BiShoppingBag className="cursor-pointer hover:text-(--main-color) transition-all duration-300" />
-                <span className="absolute text-lg w-5 h-5 rounded-full flexc text-(--white-color) bg-(--main-color)  -bottom-2 -right-3 ">
+                <span className="absolute text-sm w-4.5 h-4.5  rounded-full flexc text-(--white-color) bg-(--main-color)  -bottom-2 -right-3 ">
                   {productsCart ? productsCart.length : 0}
                 </span>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
