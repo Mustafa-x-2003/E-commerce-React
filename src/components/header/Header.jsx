@@ -2,10 +2,9 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router";
 
 // === import icons ===
-import { CiUser } from "react-icons/ci";
-import { IoHeartOutline } from "react-icons/io5";
-import { BiShoppingBag } from "react-icons/bi";
-import { IoMenuSharp } from "react-icons/io5";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { FaUser } from "react-icons/fa6";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import { IoHomeOutline } from "react-icons/io5";
 import { AiTwotoneAppstore } from "react-icons/ai";
@@ -14,6 +13,7 @@ import { AiTwotoneAppstore } from "react-icons/ai";
 import MyContext from "../contexts/MyContext";
 
 import SideBar from "../hero/SideBar";
+import CartIcon from "./CartIcon";
 // ================
 const links = [
   { name: "Home", path: "/" },
@@ -53,13 +53,10 @@ function Item({ name, path }) {
   );
 }
 function Header() {
-  const [isShowSideBar, setIsShowSideBar] = React.useState(false);
   const { productsCart, productsFavorite } = useContext(MyContext);
 
   return (
     <div className="fixed  w-full  left-0 top-0 bg-(--white-color) shadow-[0_0_10px_4px_rgba(0,0,0,0.1)] z-500 ">
-      <SideBar show={isShowSideBar} handel={setIsShowSideBar} links={links} />
-
       {/* Top Headr */}
       <div className=" flexb container py-2">
         <p>Free Shipping This Week Order Over - $55</p>
@@ -84,14 +81,7 @@ function Header() {
 
           {/* logo */}
           <div className=" flexb gap-2 text-xl md:text-2xl  font-bold">
-            <span
-              onClick={() => {
-                setIsShowSideBar(true);
-              }}
-              className=" cursor-pointer  md:hidden"
-            >
-              <IoMenuSharp />
-            </span>
+            <SideBar links={links} />
             <Link className="text-(--main-color)">NovaCart</Link>
           </div>
 
@@ -102,26 +92,17 @@ function Header() {
           </ul>
 
           {/* icons */}
-          <div className="flex  w-fit pr-3   justify-end gap-5 md:gap-8 text-2xl ">
-            <span>
-              <CiUser className="cursor-pointer hover:text-(--main-color) transition-all duration-300" />
-            </span>
-
+          <div className="flex items-center  w-fit pr-3   justify-end gap-5 md:gap-8 ">
+            <Link to={""}>
+              <span className="text-xl text-(--p-color)">
+                <FaUser />
+              </span>
+            </Link>
             <Link to={"/Favorite"}>
-              <div className="relative">
-                <IoHeartOutline className="cursor-pointer hover:text-(--main-color) transition-all duration-300" />
-                <span className="absolute text-sm w-4.5 h-4.5  rounded-full flexc text-(--white-color) bg-(--main-color)  -bottom-2 -right-3 ">
-                  {productsFavorite ? productsFavorite.length : 0}
-                </span>
-              </div>
+              <CartIcon count={productsFavorite?productsFavorite.length:0 } icon={<FavoriteIcon />} />
             </Link>
             <Link to={"/CartPage"}>
-              <div className="relative">
-                <BiShoppingBag className="cursor-pointer hover:text-(--main-color) transition-all duration-300" />
-                <span className="absolute text-sm w-4.5 h-4.5  rounded-full flexc text-(--white-color) bg-(--main-color)  -bottom-2 -right-3 ">
-                  {productsCart ? productsCart.length : 0}
-                </span>
-              </div>
+              <CartIcon count={productsCart?productsCart.length:0} icon={<ShoppingCartIcon />} />
             </Link>
           </div>
         </div>
