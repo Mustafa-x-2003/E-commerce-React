@@ -7,6 +7,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { Link } from "react-router";
+import { toast } from "react-toastify";
 
 export default function ItemsFavoriteAndCart({
   product,
@@ -43,6 +44,10 @@ export default function ItemsFavoriteAndCart({
               <span
                 onClick={() => {
                   handelMinusCounter(product.id);
+                  toast.error("One item was removed 🛒", {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                  });
                 }}
                 className="hover:text-(--main-color) text-(--p-color) text-2xl w-8 h-8  flexc cursor-pointer"
               >
@@ -54,6 +59,10 @@ export default function ItemsFavoriteAndCart({
               <span
                 onClick={() => {
                   handelPlusCounter(product.id);
+                  toast.success("One item was added 🛒", {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                  });
                 }}
                 className="hover:text-(--main-color) text-(--p-color) w-8 h-8  flexc cursor-pointer"
               >
@@ -68,6 +77,10 @@ export default function ItemsFavoriteAndCart({
               <span
                 onClick={() => {
                   handelMinusCounter(product.id);
+                  toast.error("One item was removed 🛒", {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                  });
                 }}
                 className="hover:text-(--main-color) text-(--p-color) text-2xl w-8 h-8  flexc cursor-pointer"
               >
@@ -79,6 +92,10 @@ export default function ItemsFavoriteAndCart({
               <span
                 onClick={() => {
                   handelPlusCounter(product.id);
+                  toast.success("One item was added 🛒", {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                  });
                 }}
                 className="hover:text-(--main-color) text-(--p-color) w-8 h-8  flexc cursor-pointer"
               >
@@ -90,6 +107,10 @@ export default function ItemsFavoriteAndCart({
               <p
                 onClick={() => {
                   handelDeleteItems(product.id);
+                  toast.error("Removed From Cart 🛒", {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                  });
                 }}
                 className=" text-start w-full lg:w-auto text-xl cursor-pointer  flex  items-center lg:justify-center gap-2 rounded-lg hover:text-red-600! transition-all duration-300"
               >

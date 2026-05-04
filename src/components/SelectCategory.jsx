@@ -5,7 +5,7 @@ import Select from "@mui/material/Select";
 import MyContext from "./contexts/MyContext";
 import { useState, useContext } from "react";
 export default function SelectCategory() {
-  const { allCategorys, setCategorys, categorys } = useContext(MyContext);
+  const { allCategorys, setCategorys } = useContext(MyContext);
   const [category, seCategory] = useState("");
 
   const handleChange = (event) => {

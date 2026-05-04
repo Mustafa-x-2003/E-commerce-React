@@ -14,48 +14,48 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import MyContext from "../contexts/MyContext";
+import HeaderIcons from "../header/HeaderIcons";
+import SelectCategory from "../SelectCategory";
 
-export default function SideBar({ links=[]}) {
+export default function SideBar({ links = [] }) {
   const [open, setOpen] = React.useState(false);
-    const { allCategorys } = useContext(MyContext);
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
 
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-      <List>
-        {links.map((l) => (
-          <ListItem 
-          
-          key={l.name} disablePadding>
-            <ListItemButton>
-              <Link  className="w-full" to={l.path}>
-                <h2 className="text-center text-lg">{l.name}</h2>
-              </Link>
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {links.map((l) => (
-          <ListItem key={l.name} disablePadding>
-            <ListItemButton>
-              <Link to={l.path}>
-                <p>{l.nape}</p>
-              </Link>
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
+    <>
+      <Box
+        sx={{ width: 250 }}
+        role="presentation"
+        onClick={toggleDrawer(false)}
+      >
+        <List>
+          {links.map((l) => (
+            <ListItem key={l.name} disablePadding>
+              <ListItemButton>
+                <Link className="w-full" to={l.path}>
+                  <h2 className=" text-lg">{l.name}</h2>
+                </Link>
+              </ListItemButton>
+            </ListItem>
+          ))}
+          <Divider />
+          <HeaderIcons />
+        </List>
+        <Divider />
+      </Box>
+      <List></List>
+    </>
   );
 
   return (
     <div className="md:hidden">
-      <span className="text-(--main-color)" onClick={toggleDrawer(true)}>
+      <span
+        className="text-(--main-color) text-2xl"
+        onClick={toggleDrawer(true)}
+      >
         <IoMenuSharp />
       </span>
       <Drawer open={open} onClose={toggleDrawer(false)}>

@@ -11,9 +11,10 @@ import ProductDetals from "./pages/ProductDetalsPage";
 import { MyProviderContext } from "./components/contexts/MyContext";
 import Favorite from "./pages/Favorite";
 import Checkout from "./pages/Checkout";
+import PopUp from "./components/sliderProduct/PopUp";
 // localStorage.clear()
+import { ToastContainer } from "react-toastify";
 function App() {
-  
   return (
     <>
       <MyProviderContext>
@@ -30,6 +31,7 @@ function App() {
             <Route element={<Checkout />} path={"/Checkout"} />
           </Routes>
         </div>
+        <ToastContainer />
 
         <Footer />
       </MyProviderContext>

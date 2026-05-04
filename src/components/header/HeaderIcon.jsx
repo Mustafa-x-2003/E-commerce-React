@@ -11,7 +11,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-export default function CartIcon({ count, icon }) {
+export default function HeaderIcon({ count, icon }) {
   return (
     <IconButton aria-label="cart">
       <StyledBadge

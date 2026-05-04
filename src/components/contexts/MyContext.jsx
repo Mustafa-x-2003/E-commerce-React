@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { createContext, useEffect, useState } from "react";
 const allCategorys = [
   "beauty",
@@ -158,6 +159,7 @@ export function MyProviderContext({ children }) {
     );
   }
 
+  const [isShowPopUpAdded , setIsShowPopUpAdded] = useState(false)
   return (
     <MyContext.Provider
       value={{
@@ -177,6 +179,8 @@ export function MyProviderContext({ children }) {
         setProductsFavorite,
         handelAddItemsToFavorite,
         allCategorys,
+        isShowPopUpAdded,
+        setIsShowPopUpAdded
       }}
     >
       {children}

@@ -14,9 +14,15 @@ import { Link } from "react-router";
 // context
 import MyContext from "../contexts/MyContext";
 
+import { toast } from "react-toastify";
+
 function Card({ product, type = "" }) {
-  const { handelAddItemsToCart, handelAddItemsToFavorite, productsCart ,productsFavorite } =
-    useContext(MyContext);
+  const {
+    handelAddItemsToCart,
+    handelAddItemsToFavorite,
+    productsCart,
+    productsFavorite,
+  } = useContext(MyContext);
   const isInCart = productsCart.find((p) => {
     return p.id === product.id;
   });
@@ -43,13 +49,16 @@ function Card({ product, type = "" }) {
               <span
                 onClick={() => {
                   handelAddItemsToCart(product);
+                  toast.success("Added to cart", {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                  });
                 }}
                 className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
               >
                 <FaCartArrowDown />
               </span>
             )}
-
 
             {isFavorite ? (
               <span
@@ -64,14 +73,16 @@ function Card({ product, type = "" }) {
               <span
                 onClick={() => {
                   handelAddItemsToFavorite(product);
+                  toast.success("Added to favorites", {
+                  position: "bottom-right",
+                  autoClose: 2000,
+                });
                 }}
                 className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
               >
                 <FaRegHeart />
               </span>
             )}
-
-
           </div>
         </div>
         {/* button add in mobile */}
@@ -89,6 +100,10 @@ function Card({ product, type = "" }) {
             <span
               onClick={() => {
                 handelAddItemsToCart(product);
+                toast.success("Added to cart", {
+                  position: "bottom-right",
+                  autoClose: 2000,
+                });
               }}
               className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
             >
@@ -155,13 +170,16 @@ function Card({ product, type = "" }) {
               <span
                 onClick={() => {
                   handelAddItemsToCart(product);
+                  toast.success("Added to cart", {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                  });
                 }}
                 className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
               >
                 <FaCartArrowDown />
               </span>
             )}
-
 
             {isFavorite ? (
               <span
@@ -176,14 +194,16 @@ function Card({ product, type = "" }) {
               <span
                 onClick={() => {
                   handelAddItemsToFavorite(product);
+                  toast.success("Added to favorites", {
+                  position: "bottom-right",
+                  autoClose: 2000,
+                });
                 }}
                 className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
               >
                 <FaRegHeart />
               </span>
             )}
-
-
           </div>
         </div>
         {/* button add in mobile */}
@@ -258,13 +278,16 @@ function Card({ product, type = "" }) {
               <span
                 onClick={() => {
                   handelAddItemsToCart(product);
+                  toast.success("Added to cart", {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                  });
                 }}
                 className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
               >
                 <FaCartArrowDown />
               </span>
             )}
-
 
             {isFavorite ? (
               <span
@@ -279,14 +302,16 @@ function Card({ product, type = "" }) {
               <span
                 onClick={() => {
                   handelAddItemsToFavorite(product);
+                  toast.success("Added to favorites", {
+                  position: "bottom-right",
+                  autoClose: 2000,
+                });
                 }}
                 className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
               >
                 <FaRegHeart />
               </span>
             )}
-
-
           </div>
         </div>
         {/* button add in mobile */}
