@@ -155,6 +155,10 @@ export default function ItemsFavoriteAndCart({
               <p
                 onClick={() => {
                   handelDeleteItems(product.id);
+                  toast.error("Removed From Favorits 🩶", {
+                    position: "bottom-right",
+                    autoClose:2000
+                  });
                 }}
                 className=" text-start w-full lg:w-auto text-xl cursor-pointer  flex  items-center lg:justify-center gap-2 rounded-lg hover:text-red-600! transition-all duration-300"
               >

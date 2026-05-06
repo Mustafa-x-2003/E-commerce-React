@@ -74,9 +74,9 @@ function Card({ product, type = "" }) {
                 onClick={() => {
                   handelAddItemsToFavorite(product);
                   toast.success("Added to favorites", {
-                  position: "bottom-right",
-                  autoClose: 2000,
-                });
+                    position: "bottom-right",
+                    autoClose: 2000,
+                  });
                 }}
                 className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
               >
@@ -195,9 +195,9 @@ function Card({ product, type = "" }) {
                 onClick={() => {
                   handelAddItemsToFavorite(product);
                   toast.success("Added to favorites", {
-                  position: "bottom-right",
-                  autoClose: 2000,
-                });
+                    position: "bottom-right",
+                    autoClose: 2000,
+                  });
                 }}
                 className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
               >
@@ -221,6 +221,10 @@ function Card({ product, type = "" }) {
             <span
               onClick={() => {
                 handelAddItemsToCart(product);
+                toast.success("Added to cart", {
+                  position: "bottom-right",
+                  autoClose: 2000,
+                });
               }}
               className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
             >
@@ -278,7 +282,7 @@ function Card({ product, type = "" }) {
               <span
                 onClick={() => {
                   handelAddItemsToCart(product);
-                  toast.success("Added to cart", {
+                  toast.success("Added to cart 🛒", {
                     position: "bottom-right",
                     autoClose: 2000,
                   });
@@ -302,10 +306,10 @@ function Card({ product, type = "" }) {
               <span
                 onClick={() => {
                   handelAddItemsToFavorite(product);
-                  toast.success("Added to favorites", {
-                  position: "bottom-right",
-                  autoClose: 2000,
-                });
+                  toast.success("Added to favorites 🩶", {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                  });
                 }}
                 className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
               >
@@ -329,6 +333,10 @@ function Card({ product, type = "" }) {
             <span
               onClick={() => {
                 handelAddItemsToCart(product);
+                toast.success("Added to cart", {
+                  position: "bottom-right",
+                  autoClose: 2000,
+                });
               }}
               className="flex items-center justify-center hover:bg-(--main-color) hover:text-(--white-color) transition-all duration-300 cursor-pointer w-10 h-10 rounded-full bg-(--bg-color)"
             >
